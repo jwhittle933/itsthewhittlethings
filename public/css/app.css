@@ -1,0 +1,30 @@
+.main-font {
+  font-family: Nunito;
+}
+
+.main {
+  margin-left: 15vw;
+}
+.sidenav {
+  position: fixed;
+  background: rgb(58, 58, 58);
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 15vw;
+  z-index: 1;
+  overflow: hidden;
+  padding-top: 20px;
+}
+.sidenav a {
+  font-family: Nunito;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  margin:0;
+}
+.sidenav a:hover {
+  color: #f1f1f1;
+}
