@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-@include('layouts.sidebar')
+<div id="side-nav"></div>
 <div class="main">
     <h1 class="text-center main-font">Its the Whittle Things Blog</h1>
 </div>
@@ -13,4 +13,5 @@
 
 
 @section('script')
+<script src="{{ asset('js/app.js') }}"></script>
 @endsection

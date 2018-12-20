@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-class Landing extends Component {
+class SideNav extends Component {
     constructor(){
         super()
         this.state = {
@@ -11,7 +11,12 @@ class Landing extends Component {
 
     render() {
         return (
-            <div></div>
+            <nav className="sidenav">
+                <a href="/blog"><h2>IWT Blog</h2></a>
+                <a className="nav-link" href="">Food</a>
+                <a className="nav-link" href="">Parenting</a>
+                <a className="nav-link" href="">Church</a>
+             </nav>
         );
     }
 }
