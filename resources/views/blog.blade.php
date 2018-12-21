@@ -5,9 +5,14 @@
 @endsection
 
 @section('content')
+
+<!-- Mount SideNav.jsx -->
 <div id="side-nav"></div>
+
 <div class="main">
-    <h1 class="text-center main-font">Its the Whittle Things Blog</h1>
+    <div class="header">
+        <h1 class="text-center main-font color-white">Its the Whittle Things Blog</h1>
+    </div>
 </div>
 @endsection
 

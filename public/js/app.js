@@ -59667,18 +59667,30 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "sidenav"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "sidenav-lead",
         href: "/blog"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "IWT Blog")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "IWT"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "sidenav-links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "link main-font",
         href: ""
       }, "Food"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
+        className: "link",
         href: ""
       }, "Parenting"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "nav-link",
+        className: "link",
         href: ""
-      }, "Church"));
+      }, "Church"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "link",
+        href: ""
+      }, "Archive"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "link",
+        href: ""
+      }, "User Dashboard"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "link",
+        href: ""
+      }, "Search")));
     }
   }]);
 

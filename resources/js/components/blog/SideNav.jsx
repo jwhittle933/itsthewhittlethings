@@ -12,10 +12,17 @@ class SideNav extends Component {
     render() {
         return (
             <nav className="sidenav">
-                <a href="/blog"><h2>IWT Blog</h2></a>
-                <a className="nav-link" href="">Food</a>
-                <a className="nav-link" href="">Parenting</a>
-                <a className="nav-link" href="">Church</a>
+                <div>
+                    <a className="sidenav-lead" href="/blog"><h2>IWT</h2></a>
+                </div>
+                <div className="sidenav-links">
+                    <a className="link main-font" href="">Food</a>
+                    <a className="link" href="">Parenting</a>
+                    <a className="link" href="">Church</a>
+                    <a className="link" href="">Archive</a>
+                    <a className="link" href="">User Dashboard</a>
+                    <a className="link" href="">Search</a>
+                </div>
              </nav>
         );
     }
