@@ -31,7 +31,7 @@
   height: 100vh;
   width: 15vw;
   z-index: 1;
-  overflow: hidden;
+  overflow: scroll;
   padding-top: 20px;
 }
 .link {
@@ -41,6 +41,7 @@
   color: #818181;
   padding: 6px 8px 6px 16px;
   border-bottom: 1px solid white;
+  cursor: pointer;
 }
 .sidenav-lead {
   display: block;

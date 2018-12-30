@@ -9,7 +9,7 @@ export default class SubNav extends Component {
         }
     }
     componentDidMount(){
-        //fetch top three
+        //axios to fetch top three
     }
 
     render() {

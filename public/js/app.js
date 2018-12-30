@@ -59637,13 +59637,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -59655,17 +59657,34 @@ function (_Component) {
   _inherits(SideNav, _Component);
 
   function SideNav() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, SideNav);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SideNav).call(this));
-    _this.state = {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SideNav)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       foodSubView: false,
       parentingSubView: false,
       churchSubView: false,
       popularSubView: false
-    };
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openFood", function () {
+      var newState = _this.state.foodSubView ? false : true;
+
+      _this.setState({
+        foodSubView: newState
+      }); //open SubView Components
+
+    });
+
     return _this;
   }
 
@@ -59682,26 +59701,30 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "Food",
         className: "link main-font",
-        href: ""
+        onClick: this.openFood
       }, "Food"), this.state.foodSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        content: "food",
         view: this.state.foodSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "Parenting",
         className: "link main-font",
         href: ""
-      }, "Parenting"), this.state.foodSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Parenting"), this.state.parentingSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        content: "parenting",
         view: this.state.parentingSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "Church",
         className: "link main-font",
         href: ""
-      }, "Church"), this.state.foodSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Church"), this.state.churchSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        content: "church",
         view: this.state.churchSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "Popular",
         className: "link main-font",
         href: ""
-      }, "Popular"), this.state.foodSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Popular"), this.state.popularSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        content: "popular",
         view: this.state.popularSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "link main-font",
@@ -59781,7 +59804,7 @@ function (_Component) {
 
   _createClass(SubNav, [{
     key: "componentDidMount",
-    value: function componentDidMount() {//fetch top three
+    value: function componentDidMount() {//axios to fetch top three
     }
   }, {
     key: "render",

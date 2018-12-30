@@ -4,16 +4,21 @@ import ReactDOM from 'react-dom';
 import SubNav from './SubNav'
 
 class SideNav extends Component {
-    constructor(){
-        super()
-        this.state = {
-            foodSubView: false,
-            parentingSubView: false,
-            churchSubView: false,
-            popularSubView: false,
-        }
+    state = {
+        foodSubView: false,
+        parentingSubView: false,
+        churchSubView: false,
+        popularSubView: false,
     }
 
+
+    openFood = () => {
+        let newState = this.state.foodSubView ? false : true
+        this.setState({
+            foodSubView: newState,
+        })
+        //open SubView Components
+    }
     render() {
         return (
             <nav className="sidenav">
@@ -21,30 +26,34 @@ class SideNav extends Component {
                     <a className="sidenav-lead" href="/"><h2>IWT</h2></a>
                 </div>
                 <div className="sidenav-links">
-                    <p id="Food" className="link main-font" href="">Food</p>
-                    {   this.state.foodSubView ?
+                    <p id="Food" className="link main-font" onClick={ this.openFood }>Food</p>
+                    {  this.state.foodSubView ?
                         <SubNav
+                            content={"food"}
                             view={this.state.foodSubView}
                         />
                         : null
                     }
                     <p id="Parenting" className="link main-font" href="">Parenting</p>
-                    {   this.state.foodSubView ?
+                    {   this.state.parentingSubView ?
                         <SubNav
+                            content={"parenting"}
                             view={this.state.parentingSubView}
                         />
                         : null
                     }
                     <p id="Church" className="link main-font" href="">Church</p>
-                    {   this.state.foodSubView ?
+                    {   this.state.churchSubView ?
                         <SubNav
+                            content={"church"}
                             view={this.state.churchSubView}
                         />
                         : null
                     }
                     <p id="Popular" className="link main-font" href="">Popular</p>
-                    {   this.state.foodSubView ?
+                    {   this.state.popularSubView ?
                         <SubNav
+                            content={"popular"}
                             view={this.state.popularSubView}
                         />
                         : null
