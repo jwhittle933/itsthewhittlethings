@@ -11,13 +11,29 @@ class SideNav extends Component {
         popularSubView: false,
     }
 
-
-    openFood = () => {
+    toggleFood = () => {
         let newState = this.state.foodSubView ? false : true
         this.setState({
             foodSubView: newState,
         })
-        //open SubView Components
+    }
+    toggleParenting = () => {
+        let newState = this.state.parentingSubView ? false : true
+        this.setState({
+            parentingSubView: newState,
+        })
+    }
+    toggleChurch = () => {
+        let newState = this.state.churchSubView ? false : true
+        this.setState({
+            churchSubView: newState,
+        })
+    }
+    togglePopular = () => {
+        let newState = this.state.popularSubView ? false : true
+        this.setState({
+            popularSubView: newState,
+        })
     }
     render() {
         return (
@@ -26,7 +42,7 @@ class SideNav extends Component {
                     <a className="sidenav-lead" href="/"><h2>IWT</h2></a>
                 </div>
                 <div className="sidenav-links">
-                    <p id="Food" className="link main-font" onClick={ this.openFood }>Food</p>
+                    <p id="Food" className="link main-font" onClick={ this.toggleFood }>Food</p>
                     {  this.state.foodSubView ?
                         <SubNav
                             content={"food"}
@@ -34,7 +50,7 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <p id="Parenting" className="link main-font" href="">Parenting</p>
+                    <p id="Parenting" className="link main-font" onClick={ this.toggleParenting }>Parenting</p>
                     {   this.state.parentingSubView ?
                         <SubNav
                             content={"parenting"}
@@ -42,7 +58,7 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <p id="Church" className="link main-font" href="">Church</p>
+                    <p id="Church" className="link main-font" onClick={ this.toggleChurch }>Church</p>
                     {   this.state.churchSubView ?
                         <SubNav
                             content={"church"}
@@ -50,7 +66,7 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <p id="Popular" className="link main-font" href="">Popular</p>
+                    <p id="Popular" className="link main-font" onClick={ this.togglePopular }>Popular</p>
                     {   this.state.popularSubView ?
                         <SubNav
                             content={"popular"}

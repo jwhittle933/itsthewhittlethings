@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Axios from 'axios';
 
 export default class SubNav extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            visibility: this.props.view
-        }
+    state = {
+        visibility: this.props.view || false,
+        content: this.props.content
     }
+
     componentDidMount(){
         //axios to fetch top three
     }
@@ -15,7 +15,7 @@ export default class SubNav extends Component {
     render() {
         return (
             <div>
-                <h1>This is the SubNav Component</h1>
+                <h1>This is the {this.state.content} SubNav Component</h1>
             </div>
         )
     }
