@@ -58,3 +58,17 @@
   color: #f1f1f1;
   text-decoration: none;
 }
+.subNav {
+  height: 10vh;
+  padding-left: .75vw;
+}
+.subNav a {
+  display: block;
+  font-size: .75em;
+  color: white;
+  line-height: 3.25vh;
+  text-decoration: none;
+}
+.subNav a:hover {
+  color: #f1f1f1;
+}

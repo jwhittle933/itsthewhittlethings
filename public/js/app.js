@@ -59726,28 +59726,36 @@ function (_Component) {
         className: "link main-font",
         onClick: this.toggleFood
       }, "Food"), this.state.foodSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        content: "food",
+        article1: "Cooking for Large Families",
+        article2: "Making Salmon the Right Way",
+        article3: "Un-Bland your Chicken",
         view: this.state.foodSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "Parenting",
         className: "link main-font",
         onClick: this.toggleParenting
       }, "Parenting"), this.state.parentingSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        content: "parenting",
+        article1: "Spoil the Rod, Spare the Child",
+        article2: "Teachable Two's",
+        article3: "Video Games",
         view: this.state.parentingSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "Church",
         className: "link main-font",
         onClick: this.toggleChurch
       }, "Church"), this.state.churchSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        content: "church",
+        article1: "Children's Church for Sinners",
+        article2: "Preaching and Teaching",
+        article3: "Let Them Cry",
         view: this.state.churchSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         id: "Popular",
         className: "link main-font",
         onClick: this.togglePopular
       }, "Popular"), this.state.popularSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        content: "popular",
+        article1: "Tender Hearts, Hard Spanks",
+        article2: "The Sucky Side of Seminary",
+        article3: "He's not that Smart",
         view: this.state.popularSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "link main-font",
@@ -59755,8 +59763,9 @@ function (_Component) {
       }, "Contribute"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "link main-font",
         href: "/support"
-      }, "Support"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        className: "link main-font"
+      }, "Support"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "link main-font",
+        href: ""
       }, "Search"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "link main-font",
         href: "/dashboard"
@@ -59841,12 +59850,21 @@ function (_Component) {
 
   _createClass(SubNav, [{
     key: "componentDidMount",
-    value: function componentDidMount() {//axios to fetch top three
+    value: function componentDidMount() {//axios to fetch top three with this.state.content
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "This is the ", this.state.content, " SubNav Component"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "subNav",
+        class: "subNav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/blog/34"
+      }, this.props.article1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/blog/29"
+      }, this.props.article2), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/blog/20"
+      }, this.props.article3));
     }
   }]);
 
