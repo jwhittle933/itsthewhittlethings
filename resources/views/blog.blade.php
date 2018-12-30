@@ -10,8 +10,12 @@
 <div id="side-nav"></div>
 
 <div class="main">
-    <div class="header">
-        <h1 class="text-center main-font color-white">Its the Whittle Things Blog</h1>
+    <div class="header padding-md">
+        <h1 class="text-center main-font color-white position-relative">Its the Whittle Things Blog</h1>
+        <h2 class="text-center main-font color-white mt-5">Blog about life, love, and living in the South</h2>
+    </div>
+    <div class="posts">
+        <!-- render past 15 blog posts + splash image -->
     </div>
 </div>
 @endsection

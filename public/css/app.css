@@ -1,7 +1,9 @@
-* {
-  box-sizing: border-box;
+.padding-md {
+  padding: 3vh;
 }
-
+.top-margin-max {
+  margin-top: 15vh;
+}
 .main-font {
   font-family: Nunito;
 }
@@ -14,10 +16,11 @@
   padding: 5vh;
 }
 .header {
-  height: 35vh;
+  height: 50vh;
   width: 75vw;
   margin: 0 auto;
-  background-image: url("/img/img3.jpg");
+  background-image: linear-gradient(rgba(58, 63, 88, 0.6) 60%, rgba(201, 201, 201, 0.5)),
+              url("/img/img3.jpg");
   border-radius: 10px;
 }
 .sidenav {
@@ -30,8 +33,6 @@
   z-index: 1;
   overflow: hidden;
   padding-top: 20px;
-  /* transform: translateX(-100%);
-  transition: transform 250ms ease-in; */
 }
 .link {
   display: block;
@@ -39,7 +40,6 @@
   font-size: 1.2em;
   color: #818181;
   padding: 6px 8px 6px 16px;
-  text-decoration: none;
   border-bottom: 1px solid white;
 }
 .sidenav-lead {

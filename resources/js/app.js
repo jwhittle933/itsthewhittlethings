@@ -1,3 +1,3 @@
 require('./bootstrap');
 require('./components/homepage/Landing')
-require('./components/blog/SideNav')
+require('./components/blog/nav/SideNav')
