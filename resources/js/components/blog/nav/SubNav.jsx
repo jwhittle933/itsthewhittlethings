@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Axios from 'axios';
+import axios from 'axios';
 
 export default class SubNav extends Component {
     state = {
@@ -14,7 +14,7 @@ export default class SubNav extends Component {
 
     render() {
         return (
-            <div id="subNav" class="subNav">
+            <div id="subNav" className="subNav">
                 <a href="/blog/34">{this.props.article1}</a>
                 <a href="/blog/29">{this.props.article2}</a>
                 <a href="/blog/20">{this.props.article3}</a>

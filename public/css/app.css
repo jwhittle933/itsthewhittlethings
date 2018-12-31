@@ -18,12 +18,14 @@
 .header {
   height: 50vh;
   width: 75vw;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5vh;
   background-image: linear-gradient(rgba(58, 63, 88, 0.6) 60%, rgba(201, 201, 201, 0.5)),
               url("/img/img3.jpg");
   border-radius: 10px;
 }
-.sidenav {
+.sideNavComponent {
   position: fixed;
   background: rgb(58, 58, 58);
   top: 0;
@@ -71,4 +73,24 @@
 }
 .subNav a:hover {
   color: #f1f1f1;
+  border-left: 2px solid white;
+  padding-left: 2px;
+}
+.searchbar {
+  display: flex;
+  justify-content: flex-end;
+}
+.input {
+  margin-left: .5vw;
+  margin-right: 2vw;
+  padding-left: 1vw;
+  border-top: none;
+  border-bottom: 1px solid grey;
+  border-right: none;
+  border-left: none;
+  font-family: Nunito;
+}
+.input:focus {
+  outline: none;
+  border-bottom: 1px solid black;
 }

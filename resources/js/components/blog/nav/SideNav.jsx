@@ -15,29 +15,41 @@ class SideNav extends Component {
         let newState = this.state.foodSubView ? false : true
         this.setState({
             foodSubView: newState,
+            parentingSubView: false,
+            churchSubView: false,
+            popularSubView: false,
         })
     }
     toggleParenting = () => {
         let newState = this.state.parentingSubView ? false : true
         this.setState({
+            foodSubView: false,
             parentingSubView: newState,
+            churchSubView: false,
+            popularSubView: false,
         })
     }
     toggleChurch = () => {
         let newState = this.state.churchSubView ? false : true
         this.setState({
+            foodSubView: false,
+            parentingSubView: false,
             churchSubView: newState,
+            popularSubView: false,
         })
     }
     togglePopular = () => {
         let newState = this.state.popularSubView ? false : true
         this.setState({
+            foodSubView: false,
+            parentingSubView: false,
+            churchSubView: false,
             popularSubView: newState,
         })
     }
     render() {
         return (
-            <nav className="sidenav">
+            <nav className="sideNavComponent">
                 <div>
                     <a className="sidenav-lead" href="/"><h2>IWT</h2></a>
                 </div>
@@ -86,8 +98,6 @@ class SideNav extends Component {
                     {/* Link redirects to page to submit material */}
                     <a className="link main-font" href="/support" >Support</a>
                     {/* Link redirects to a donations page */}
-                    <a className="link main-font" href="">Search</a>
-                    {/* Link opens opens a search bar that filters posts */}
                     <a className="link main-font" href="/dashboard">User Dashboard</a>
                     {/* Link redirects to login or to user backend */}
                 </div>
