@@ -8,7 +8,7 @@ import axios from 'axios'
 export default class BlogsComponent extends Component {
     /**
      * TODO:
-     * Implement search functionality
+     * Implement search filter functionality
      * Set search param based on user input and filter blog entries based on keyword search
      */
     _isMounted = false
@@ -22,9 +22,6 @@ export default class BlogsComponent extends Component {
 
     componentDidMount(){
         this._isMounted = true
-        /** Get blog posts
-         * Display each from Laravel with $request->created_at->diffForHumans()
-        */
         axios
         .get('/api/content', {
             params: {
