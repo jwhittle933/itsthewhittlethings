@@ -59630,6 +59630,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _svg_Search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./svg/Search */ "./resources/js/components/blog/svg/Search.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59673,8 +59675,16 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(BlogsComponent)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_isMounted", false);
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      searchParam: null
+      searchParam: null,
+      blogs: [] // setStateAsync(state){
+      //     return new Promise( resolve => {
+      //         this.setState(state, resolve)
+      //     })
+      // }
+
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateSearchParam", function (e) {
@@ -59685,10 +59695,38 @@ function (_Component) {
   }
 
   _createClass(BlogsComponent, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this._isMounted = true;
+      /** Get blog posts
+       * Display each from Laravel with $request->created_at->diffForHumans()
+      */
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('/api/content', {
+        params: {
+          table: 'blogposts',
+          which: "all"
+        }
+      }).then(function (response) {
+        if (_this2._isMounted) {
+          _this2.setState({
+            blogs: response.data
+          });
+        }
+      });
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this._isMounted = false;
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "searchComponent"
+        className: "blogsComponent"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "searchbar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_Search__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -59697,6 +59735,12 @@ function (_Component) {
         className: "input",
         onChange: this.updateSearchParam,
         placeholder: "Search"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "blogs"
+      }, this.state.blogs.map(function (item) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+          key: item.id
+        }, item.title);
       })));
     }
   }]);
@@ -59772,7 +59816,7 @@ function (_Component) {
       foodSubView: false,
       parentingSubView: false,
       churchSubView: false,
-      popularSubView: false
+      booksSubView: false
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggleFood", function () {
@@ -59782,7 +59826,7 @@ function (_Component) {
         foodSubView: newState,
         parentingSubView: false,
         churchSubView: false,
-        popularSubView: false
+        booksSubView: false
       });
     });
 
@@ -59793,7 +59837,7 @@ function (_Component) {
         foodSubView: false,
         parentingSubView: newState,
         churchSubView: false,
-        popularSubView: false
+        booksSubView: false
       });
     });
 
@@ -59804,18 +59848,18 @@ function (_Component) {
         foodSubView: false,
         parentingSubView: false,
         churchSubView: newState,
-        popularSubView: false
+        booksSubView: false
       });
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "togglePopular", function () {
-      var newState = _this.state.popularSubView ? false : true;
+      var newState = _this.state.booksSubView ? false : true;
 
       _this.setState({
         foodSubView: false,
         parentingSubView: false,
         churchSubView: false,
-        popularSubView: newState
+        booksSubView: newState
       });
     });
 
@@ -59863,20 +59907,14 @@ function (_Component) {
         id: "Popular",
         className: "link main-font",
         onClick: this.togglePopular
-      }, "Popular"), this.state.popularSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Books"), this.state.booksSubView ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SubNav__WEBPACK_IMPORTED_MODULE_2__["default"], {
         article1: "Tender Hearts, Hard Spanks",
         article2: "The Sucky Side of Seminary",
         article3: "He's not that Smart",
-        view: this.state.popularSubView
+        view: this.state.booksSubView
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "link main-font",
-        href: "/contribute"
-      }, "Contribute"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "link main-font",
-        href: "/support"
-      }, "Support"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        className: "link main-font",
-        href: "/dashboard"
+        href: "/home"
       }, "User Dashboard")));
     }
   }]);

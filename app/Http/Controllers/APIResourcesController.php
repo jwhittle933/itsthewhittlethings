@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Blogposts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class BlogController extends Controller
+class APIResourcesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('blog');
+        $content = $request->table;
+        $what = $request->which;
+
+        if($what === "all"){
+            $data = DB::table($content)->get();
+        }
+
+        return $data;
     }
 
     /**
@@ -25,7 +31,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('newblog');
+        //
     }
 
     /**
@@ -36,24 +42,7 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $title = $request->title;
-        $body = $request->body;
-        $author = $request->author;
-        $tags = $request->tags;
-
-        //Use Blogposts model to have auto generated timestamps
-        $submit = Blogposts::create([
-            'title' => $title,
-            'author' => $author,
-            'body' => $body,
-            'keywords' => $tags, //tags fail on submit if not in ["", "", ...] format
-            'votes' => 1, //default 1 vote for new post
-        ]);
-        if ($submit){
-            return view('/blog');
-        } else {
-            return view('newblog');
-        }
+        //
     }
 
     /**

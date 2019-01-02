@@ -16,9 +16,9 @@ class CreateBlogpostsTable extends Migration
         Schema::create('blogposts', function (Blueprint $table) {
             $table->increments('id');
             $table->text('title');
-            $table->text('author');
+            $table->text('author')->nullable();
             $table->text('body');
-            $table->json('keywords');
+            $table->json('keywords')->nullable();
             $table->bigInteger('votes');
             $table->timestamps();
         });

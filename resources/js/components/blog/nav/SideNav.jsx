@@ -8,7 +8,7 @@ class SideNav extends Component {
         foodSubView: false,
         parentingSubView: false,
         churchSubView: false,
-        popularSubView: false,
+        booksSubView: false,
     }
 
     toggleFood = () => {
@@ -17,7 +17,7 @@ class SideNav extends Component {
             foodSubView: newState,
             parentingSubView: false,
             churchSubView: false,
-            popularSubView: false,
+            booksSubView: false,
         })
     }
     toggleParenting = () => {
@@ -26,7 +26,7 @@ class SideNav extends Component {
             foodSubView: false,
             parentingSubView: newState,
             churchSubView: false,
-            popularSubView: false,
+             booksSubView: false,
         })
     }
     toggleChurch = () => {
@@ -35,16 +35,16 @@ class SideNav extends Component {
             foodSubView: false,
             parentingSubView: false,
             churchSubView: newState,
-            popularSubView: false,
+             booksSubView: false,
         })
     }
     togglePopular = () => {
-        let newState = this.state.popularSubView ? false : true
+        let newState = this.state. booksSubView ? false : true
         this.setState({
             foodSubView: false,
             parentingSubView: false,
             churchSubView: false,
-            popularSubView: newState,
+             booksSubView: newState,
         })
     }
     render() {
@@ -80,25 +80,21 @@ class SideNav extends Component {
                             article1={"Children's Church for Sinners"}
                             article2={"Preaching and Teaching"}
                             article3={"Let Them Cry"}
-                            view={this.state.churchSubView}
+                            view={ this.state.churchSubView }
                         />
                         : null
                     }
-                    <p id="Popular" className="link main-font" onClick={ this.togglePopular }>Popular</p>
-                    {   this.state.popularSubView ?
+                    <p id="Popular" className="link main-font" onClick={ this.togglePopular }>Books</p>
+                    {   this.state. booksSubView ?
                         <SubNav
                             article1={"Tender Hearts, Hard Spanks"}
                             article2={"The Sucky Side of Seminary"}
                             article3={"He's not that Smart"}
-                            view={this.state.popularSubView}
+                            view={ this.state. booksSubView }
                         />
                         : null
                     }
-                    <a className="link main-font" href="/contribute">Contribute</a>
-                    {/* Link redirects to page to submit material */}
-                    <a className="link main-font" href="/support" >Support</a>
-                    {/* Link redirects to a donations page */}
-                    <a className="link main-font" href="/dashboard">User Dashboard</a>
+                    <a className="link main-font" href="/home">User Dashboard</a>
                     {/* Link redirects to login or to user backend */}
                 </div>
              </nav>

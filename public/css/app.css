@@ -1,3 +1,24 @@
+input {
+  margin-bottom: 5vh;
+  display: block;
+}
+textarea {
+  margin-bottom: 5vh;
+}
+label {
+  display: block;
+}
+button {
+  margin: 2vw;
+  width: 7vw;
+  height: auto;
+  background-color: #00B251;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Nunito;
+  color: white;
+  outline: none;
+}
 .padding-md {
   padding: 3vh;
 }
@@ -27,7 +48,7 @@
 }
 .sideNavComponent {
   position: fixed;
-  background: rgb(58, 58, 58);
+  background: #FF6F69;
   top: 0;
   left: 0;
   height: 100vh;
@@ -40,9 +61,9 @@
   display: block;
   font-family: Nunito;
   font-size: 1.2em;
-  color: #818181;
+  color: white;
   padding: 6px 8px 6px 16px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #AAD8B0;
   cursor: pointer;
 }
 .sidenav-lead {
@@ -85,12 +106,33 @@
   margin-right: 2vw;
   padding-left: 1vw;
   border-top: none;
-  border-bottom: 1px solid grey;
+  border-bottom: none;
   border-right: none;
   border-left: none;
   font-family: Nunito;
 }
 .input:focus {
   outline: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1.2px solid black;
+}
+.newblog{
+  margin-left: 15vw;
+}
+.create {
+  display: block;
+  margin-left: 5vw;
+  padding: 2vw;
+  width: 75%;
+  box-shadow: -6px 0px 16px -6px black;
+}
+.new {
+  border-bottom: 1px solid grey;
+}
+.save:hover {
+  transform: translate(2%, -2%);
+  box-shadow: -2px 3px 16px -6px black;
+}
+.save:active {
+  width:6.9vw;
+  outline: none;
 }

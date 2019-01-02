@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import SearchIcon from './svg/Search'
-import Search from './svg/Search';
+import axios from 'axios'
 
 export default class BlogsComponent extends Component {
     /**
@@ -9,9 +9,42 @@ export default class BlogsComponent extends Component {
      * Call to api for all blog entries is searchParam is null
      * Set search param based on user input and filter blog entries based on keyword search
      */
+    _isMounted = false
 
     state = {
-        searchParam: null
+        searchParam: null,
+        blogs: []
+    }
+
+    // setStateAsync(state){
+    //     return new Promise( resolve => {
+    //         this.setState(state, resolve)
+    //     })
+    // }
+
+    componentDidMount(){
+        this._isMounted = true
+        /** Get blog posts
+         * Display each from Laravel with $request->created_at->diffForHumans()
+        */
+        axios
+        .get('/api/content', {
+            params: {
+                table: 'blogposts',
+                which: "all"
+            }
+        })
+        .then( response => {
+            if(this._isMounted){
+                this.setState({
+                    blogs: response.data
+                })
+            }
+        })
+    }
+
+    componentWillUnmount(){
+        this._isMounted = false
     }
 
     updateSearchParam = (e) => {
@@ -20,10 +53,17 @@ export default class BlogsComponent extends Component {
 
     render() {
         return (
-            <div className="searchComponent">
+            <div className="blogsComponent">
                 <div className="searchbar">
                     <SearchIcon />
                     <input type="text" name="filter-blogs" className="input" onChange={this.updateSearchParam} placeholder="Search"/>
+                </div>
+                <div className="blogs">
+                    {
+                        this.state.blogs.map( item => (
+                            <h1 key={item.id}>{item.title}</h1>
+                        ))
+                    }
                 </div>
             </div>
         )
