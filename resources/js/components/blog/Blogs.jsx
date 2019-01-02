@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import SearchIcon from './svg/Search'
+import ThumbsUp from './svg/ThumbsUp'
+import CommentIcon from './svg/Comment'
 import axios from 'axios'
 
 export default class BlogsComponent extends Component {
     /**
+     * TODO:
      * Implement search functionality
-     * Call to api for all blog entries is searchParam is null
      * Set search param based on user input and filter blog entries based on keyword search
      */
     _isMounted = false
 
     state = {
         searchParam: null,
-        blogs: []
+        blogs: [],
+        tile: {},
+        tileActive: {}
     }
-
-    // setStateAsync(state){
-    //     return new Promise( resolve => {
-    //         this.setState(state, resolve)
-    //     })
-    // }
 
     componentDidMount(){
         this._isMounted = true
@@ -61,7 +59,21 @@ export default class BlogsComponent extends Component {
                 <div className="blogs">
                     {
                         this.state.blogs.map( item => (
-                            <h1 key={item.id}>{item.title}</h1>
+                            <div key={item.id} className="tile padding-md">
+                                <h5 className="main-font">{item.title}</h5>
+                                <p className="main-font">{item.author}</p>
+                                <p className="main-font">{item.created_at}</p>
+                                {/* <p className="main-font">{item.body.substring(0, 200)}...</p> */}
+                                <div className="tile-splash">
+                                    <figure>
+                                        <img></img>
+                                    </figure>
+                                </div>
+                                <div className="tile-bottom">
+                                    <ThumbsUp />
+                                    <CommentIcon />
+                                </div>
+                            </div>
                         ))
                     }
                 </div>

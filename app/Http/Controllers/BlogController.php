@@ -64,7 +64,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('single');
     }
 
     /**

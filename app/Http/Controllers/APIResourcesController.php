@@ -18,7 +18,9 @@ class APIResourcesController extends Controller
         $what = $request->which;
 
         if($what === "all"){
-            $data = DB::table($content)->get();
+            $data = DB::table($content)->select('id', 'title', 'author')->get();
+        } else if($what === "specific"){
+            //query for stuff
         }
 
         return $data;
