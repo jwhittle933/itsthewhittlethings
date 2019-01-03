@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog');
+        return view('blog')->with('test', "User Dashboard");
     }
 
     /**
@@ -25,7 +25,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('newblog');
+        return view('newblog')->with('test', "User Dashboard");
     }
 
     /**
@@ -50,9 +50,9 @@ class BlogController extends Controller
             'votes' => 1, //default 1 vote for new post
         ]);
         if ($submit){
-            return view('/blog');
+            return view('/blog')->with('test', "User Dashboard");
         } else {
-            return view('newblog');
+            return view('newblog')->with('test', "User Dashboard");
         }
     }
 

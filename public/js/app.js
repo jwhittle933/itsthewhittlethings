@@ -59684,7 +59684,19 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       searchParam: null,
       blogs: [],
-      tile: {},
+      tile: {
+        position: "relative",
+        flexGrow: 1,
+        margin: "2vw 2vh",
+        width: "300px",
+        height: "350px",
+        overflow: "hidden",
+        borderRadius: "8px",
+        boxShadow: "-4px 4px 20px 1px lightgrey",
+        textDecoration: "none",
+        color: "inherit",
+        animation: "tilebounce .5s"
+      },
       tileActive: {}
     });
 
@@ -59701,10 +59713,6 @@ function (_Component) {
       var _this2 = this;
 
       this._isMounted = true;
-      /** Get blog posts
-       * Display each from Laravel with $request->created_at->diffForHumans()
-      */
-
       axios__WEBPACK_IMPORTED_MODULE_5___default.a.get('/api/content', {
         params: {
           table: 'blogposts',
@@ -59750,9 +59758,15 @@ function (_Component) {
           className: "main-font"
         }, item.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "tile-splash"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: "https://picsum.photos/317/225/?random"
+        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "tile-bottom"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_ThumbsUp__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_Comment__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_ThumbsUp__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          postId: item.id
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_Comment__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          postId: item.id
+        })));
       })));
     }
   }]);
@@ -59927,7 +59941,7 @@ function (_Component) {
       }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "link main-font",
         href: "/home"
-      }, "User Dashboard")));
+      }, this.props.text)));
     }
   }]);
 
@@ -59935,7 +59949,9 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 if (document.getElementById('side-nav')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SideNav, null), document.getElementById('side-nav'));
+  var element = document.getElementById('side-nav');
+  var props = Object.assign({}, element.dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SideNav, props), element);
 }
 
 /***/ }),
@@ -60055,13 +60071,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -60071,12 +60089,38 @@ function (_Component) {
   _inherits(CommentIcon, _Component);
 
   function CommentIcon() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, CommentIcon);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CommentIcon).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CommentIcon)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_isMounted", false);
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "addComment", function () {
+      console.log(_this.props.postId);
+    });
+
+    return _this;
   }
 
   _createClass(CommentIcon, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._isMounted = true; //retrieve comments for post
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this._isMounted = false; //do stuff
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
@@ -60085,7 +60129,8 @@ function (_Component) {
         version: "1.1",
         width: "20",
         height: "20",
-        className: "comment"
+        className: "comment",
+        onClick: this.addComment
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
         id: "surface1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
@@ -60178,6 +60223,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ThumbsUp; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -60188,13 +60235,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -60204,12 +60254,41 @@ function (_Component) {
   _inherits(ThumbsUp, _Component);
 
   function ThumbsUp() {
+    var _getPrototypeOf2;
+
+    var _this;
+
     _classCallCheck(this, ThumbsUp);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ThumbsUp).apply(this, arguments));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(ThumbsUp)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_isMounted", false);
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "upvote", function () {
+      console.log(_this.props.postId);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/content/' + _this.props.postId).then(function (response) {
+        console.log(response.data);
+      });
+    });
+
+    return _this;
   }
 
   _createClass(ThumbsUp, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this._isMounted = true; //retrieve comments for post
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this._isMounted = false; //do stuff
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
@@ -60218,7 +60297,8 @@ function (_Component) {
         width: "20",
         height: "20",
         viewBox: "0 0 16 16",
-        className: "thumbs-up"
+        className: "thumbs-up",
+        onClick: this.upvote
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
         fill: "#444444",
         d: "M16 7.1c0-1.5-1.4-2.1-2.2-2.1h-2.2c0.4-1 0.7-2.2 0.5-3.1-0.5-1.8-2-1.9-2.5-1.9h-0.1c-0.4 0-0.6 0.2-0.8 0.5l-1 2.8-2.7 2.7h-5v9h5v-1c0.2 0 0.7 0.3 1.2 0.6 1.2 0.6 2.9 1.5 4.5 1.5 2.4 0 3.2-0.3 3.8-1.3 0.3-0.6 0.3-1.1 0.3-1.4 0.2-0.2 0.5-0.5 0.6-1s0.1-0.8 0-1.1c0.2-0.3 0.4-0.7 0.5-1.3 0-0.5-0.1-0.9-0.2-1.2 0.1-0.4 0.3-0.9 0.3-1.7zM2.5 13.5c-0.6 0-1-0.4-1-1s0.4-1 1-1 1 0.4 1 1c0 0.6-0.4 1-1 1zM14.7 9.1c0 0 0.2 0.2 0.2 0.7 0 0.6-0.4 0.9-0.4 0.9l-0.3 0.3 0.2 0.3c0 0 0.2 0.3 0 0.7-0.1 0.4-0.5 0.7-0.5 0.7l-0.3 0.3 0.2 0.4c0 0 0.2 0.4-0.1 0.9-0.2 0.4-0.4 0.7-2.9 0.7-1.4 0-3-0.8-4.1-1.4-0.8-0.4-1.3-0.6-1.7-0.6v0-6h0.1c0.2 0 0.4-0.1 0.6-0.2l2.8-2.8c0.1-0.1 0.1-0.2 0.2-0.3l1-2.7c0.5 0 1.2 0.2 1.4 1.1 0.1 0.6-0.1 1.6-0.6 2.8-0.1 0.3-0.1 0.5 0.1 0.8 0.1 0.2 0.4 0.3 0.7 0.3h2.5c0.1 0 1.2 0.2 1.2 1.1 0 0.8-0.3 1.2-0.3 1.2l-0.3 0.4 0.3 0.4z"

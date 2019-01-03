@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import SearchIcon from './svg/Search'
 import ThumbsUp from './svg/ThumbsUp'
 import CommentIcon from './svg/Comment'
-import axios from 'axios'
+import Axios from 'axios'
 
 export default class BlogsComponent extends Component {
     /**
@@ -16,13 +16,25 @@ export default class BlogsComponent extends Component {
     state = {
         searchParam: null,
         blogs: [],
-        tile: {},
+        tile: {
+            position: "relative",
+            flexGrow: 1,
+            margin: "2vw 2vh",
+            width: "300px",
+            height: "350px",
+            overflow: "hidden",
+            borderRadius: "8px",
+            boxShadow: "-4px 4px 20px 1px lightgrey",
+            textDecoration: "none",
+            color: "inherit",
+            animation: "tilebounce .5s",
+        },
         tileActive: {}
     }
 
     componentDidMount(){
         this._isMounted = true
-        axios
+        Axios
         .get('/api/content', {
             params: {
                 table: 'blogposts',
@@ -63,12 +75,16 @@ export default class BlogsComponent extends Component {
                                 {/* <p className="main-font">{item.body.substring(0, 200)}...</p> */}
                                 <div className="tile-splash">
                                     <figure>
-                                        <img></img>
+                                        <img src="https://picsum.photos/317/225/?random"></img>
                                     </figure>
                                 </div>
                                 <div className="tile-bottom">
-                                    <ThumbsUp />
-                                    <CommentIcon />
+                                    <ThumbsUp
+                                        postId={item.id}
+                                    />
+                                    <CommentIcon
+                                        postId={item.id}
+                                    />
                                 </div>
                             </div>
                         ))

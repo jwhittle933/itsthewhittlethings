@@ -94,8 +94,7 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <a className="link main-font" href="/home">User Dashboard</a>
-                    {/* Link redirects to login or to user backend */}
+                    <a className="link main-font" href="/home">{this.props.text}</a>
                 </div>
              </nav>
         );
@@ -103,5 +102,7 @@ class SideNav extends Component {
 }
 
 if (document.getElementById('side-nav')) {
-    ReactDOM.render(<SideNav />, document.getElementById('side-nav'));
+    const element = document.getElementById('side-nav')
+    const props = Object.assign({}, element.dataset)
+    ReactDOM.render(<SideNav {...props}/>, element);
 }

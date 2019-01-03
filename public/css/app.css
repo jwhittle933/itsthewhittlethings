@@ -48,7 +48,7 @@ button {
 }
 .sideNavComponent {
   position: fixed;
-  background: #FF6F69;
+  background: #F76E6C;
   top: 0;
   left: 0;
   height: 100vh;
@@ -63,7 +63,7 @@ button {
   font-size: 1.2em;
   color: white;
   padding: 6px 8px 6px 16px;
-  border-bottom: 1px solid #AAD8B0;
+  border-bottom: 1px solid #9FE4FF;
   cursor: pointer;
 }
 .sidenav-lead {
@@ -110,6 +110,7 @@ button {
   border-right: none;
   border-left: none;
   font-family: Nunito;
+  transition: border-bottom ease .1s;
 }
 .input:focus {
   outline: none;
@@ -147,12 +148,14 @@ button {
   flex-grow: 1;
   margin: 2vw 2vh;
   width: 300px;
+  max-width: 300px;
   height: 350px;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: -4px 4px 20px 1px lightgrey;
   text-decoration: none;
   color: inherit;
+  animation: tilebounce .5s;
 }
 .tile h5,
 .tile-splash {
@@ -161,10 +164,9 @@ button {
 .tile-splash {
   position: absolute;
   width: 100%;
-  height: 200px;
+  height: 225px;
   bottom: 40px;
   left: 0;
-  border: 2px solid red;
 }
 .tile-bottom {
   position: absolute;
@@ -177,7 +179,41 @@ button {
 }
 .thumbs-up{
   cursor: pointer;
+  margin-left: 1vw;
+}
+.thumbs-up:hover,
+.comment:hover {
+  transform: scale(1.1);
+}
+.thumbs-up:hover path{
+  fill: #00ADB5;
+}
+.thumbs-up path,
+.comment path {
+  transition: scale ease-in 0.1s;
 }
 .comment {
   cursor: pointer;
+  margin-left: 1vw;
+}
+.comment:hover path {
+  fill: #FC3C3C;
+  stroke-width: 150%;
+}
+
+
+
+/**
+  * Keyframe animations
+  */
+@keyframes tilebounce {
+  0% {
+    transform: translateY(15%);
+  }
+  50%{
+    transform: translateY(-10%);
+  }
+  100%{
+    transform: translateY(0);
+  }
 }
