@@ -28,6 +28,9 @@ button {
 .main-font {
   font-family: Nunito;
 }
+.font-sm {
+  font-size: .75em; 
+}
 .color-white {
   color: white;
 }
@@ -171,15 +174,25 @@ button {
 .tile-bottom {
   position: absolute;
   display: flex;
-  padding: 1vw;
+  padding-left: 1vw;
   left: 0;
   bottom: 0px;
   width: 100%;
   height: 40px;
 }
+.svg-wrapper {
+  position: relative;
+}
 .thumbs-up{
   cursor: pointer;
   margin-left: 1vw;
+}
+.count { 
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: auto; 
+  width: auto; 
 }
 .thumbs-up:hover,
 .comment:hover {

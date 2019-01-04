@@ -16,13 +16,14 @@ class APIResourcesController extends Controller
      */
     public function index(Request $request)
     {
-        $content = $request->table;
-        $what = $request->which;
+        $table = $request->table;
+        $which = $request->which;
+        $what = $request->what;
 
-        if($what === "all"){
-            $data = DB::table($content)->select('id', 'title', 'author')->get();
-        } else if($what === "specific"){
-            //query for stuff
+        if($which === "all"){ //populate blog main page
+            $data = DB::table($table)->select('id', 'title', 'author')->get();
+        } else if($which === "specific"){
+            $data = DB::table($table)->select($what)->get();
         }
 
         return $data;
@@ -63,11 +64,12 @@ class APIResourcesController extends Controller
      */
     public function show($id)
     {
-        $affected = DB::table('blogposts')->where('id', $id)->increment('votes');
+        $affected = DB::table('blogposts')->where('id', $id)->select('votes')->get();
+        
         if($affected){
-            return "Upvote success";
+            return $affected;
         } else {
-            return "Hmm. There was an issue...";
+            return "?";
         }
     }
 
@@ -81,7 +83,17 @@ class APIResourcesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $affected = DB::table('blogposts')->where('id', $id)->increment('votes');
+        if($affected){
+            $votes = DB::table('blogposts')->where('id', $id)->select('votes')->get();
+            if ($votes){
+                return $votes;
+            } else {
+                return "Hmm. There was an issue...";
+            }
+        } else {
+            return "Hmm. There was an issue...";
+        }
     }
 
     /**
