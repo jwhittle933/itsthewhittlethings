@@ -58,7 +58,8 @@ class APIResourcesController extends Controller
      * Display the specified resource.
      *
      * GET request to /content/{id}
-     *
+     * Retrieves initial vote count
+     * 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

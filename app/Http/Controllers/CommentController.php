@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Blogposts;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Comment; 
 
-class BlogController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog')->with('test', "User Dashboard");
+        //
     }
 
     /**
@@ -25,34 +24,38 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('newblog')->with('test', "User Dashboard");
+        //
     }
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * POST to /comments
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $title = $request->title;
-        $body = $request->body;
-        $author = $request->author;
-        $tags = $request->tags;
+        $blogID = $request->id;
+        $name = $request->name;
+        $comment = $request->comment;
 
-        //Use Blogposts model to have auto generated timestamps
-        $submit = Blogposts::create([
-            'title' => $title,
-            'author' => $author,
-            'body' => $body,
-            'keywords' => $tags, //tags fail on submit if not in ["", "", ...] format
-            'votes' => 1, //default 1 vote for new post
-        ]);
-        if ($submit){
-            return view('/blog')->with('test', "User Dashboard");
+        if($name && $comment){
+            $newComment = Comment::create([
+                'blog_id' => $blogID,
+                'comment' => $comment,
+                'name' => $name
+            ]);
+            if($newComment){
+                return redirect('/blog/' . $blogID)->with('success', 'Thank You');
+            } else {
+                return redirect('/blog/' . $blogID)->with('error', "There was a problem saving your comment. This is on our end and should be fixed shortly.") 
+            }
+        } else if ($comment && !$name){
+            return redirect('/blog/' . $blogID)->with('error', "Please include your name.")
         } else {
-            return view('newblog')->with('test', "User Dashboard");
+            return redirect('/blog/' . $blogID)->with('error', "Both fields are required.")
         }
     }
 
@@ -64,12 +67,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        $affected = Blogposts::where('id', $id)->get();
-        if($affected){
-            return view('single')->with('data', $affected);
-        } else {
-            return "Uh oh. Something went wrong.";
-        }
+        //
     }
 
     /**

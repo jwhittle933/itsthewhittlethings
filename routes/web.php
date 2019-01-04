@@ -15,5 +15,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resources([
     'store' => 'StoreController',
-    'blog' => 'BlogController'
+    'blog' => 'BlogController',
+    'comment' => 'CommentController'
 ]);

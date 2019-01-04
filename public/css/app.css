@@ -4,6 +4,7 @@ input {
 }
 textarea {
   margin-bottom: 5vh;
+  display: block;
 }
 label {
   display: block;
@@ -12,7 +13,6 @@ button {
   margin: 2vw;
   width: 7vw;
   height: auto;
-  background-color: #00B251;
   border-radius: 5px;
   cursor: pointer;
   font-family: Nunito;
@@ -87,6 +87,7 @@ button {
 .subNav {
   height: 10vh;
   padding-left: .75vw;
+  animation: slide-down .1s; 
 }
 .subNav a {
   display: block;
@@ -105,6 +106,7 @@ button {
   justify-content: flex-end;
 }
 .input {
+  width: 30vw;
   margin-left: .5vw;
   margin-right: 2vw;
   padding-left: 1vw;
@@ -113,11 +115,14 @@ button {
   border-right: none;
   border-left: none;
   font-family: Nunito;
-  transition: border-bottom ease .1s;
+  transition: border-left cubic-bezier(0,.89,.36,.28) .1s;
+  transition: width cubic-bezier(0,.89,.36,.28) .1s;
 }
 .input:focus {
   outline: none;
-  border-bottom: 1.2px solid black;
+  border-bottom: 1px solid #006EC7;
+  border-left: 2px solid #006EC7;
+  width: 50vw;
 }
 .newblog{
   margin-left: 15vw;
@@ -129,8 +134,12 @@ button {
   width: 75%;
   box-shadow: -6px 0px 16px -6px black;
 }
-.new {
+/*.new {
   border-bottom: 1px solid grey;
+}*/
+.save {
+  background-color: #00B251;
+  color: white;
 }
 .save:hover {
   transform: translate(2%, -2%);
@@ -144,7 +153,6 @@ button {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  /* justify-content: space-evenly; */
 }
 .tile {
   position: relative;
@@ -158,7 +166,7 @@ button {
   box-shadow: -4px 4px 20px 1px lightgrey;
   text-decoration: none;
   color: inherit;
-  animation: tilebounce .5s;
+  animation: tilebounce .3s; 
 }
 .tile h5,
 .tile-splash {
@@ -175,6 +183,7 @@ button {
   position: absolute;
   display: flex;
   padding-left: 1vw;
+  padding-top: 1vh; 
   left: 0;
   bottom: 0px;
   width: 100%;
@@ -193,6 +202,7 @@ button {
   left: 0;
   height: auto; 
   width: auto; 
+  animation: thumbsup .4s;
 }
 .thumbs-up:hover,
 .comment:hover {
@@ -213,12 +223,58 @@ button {
   fill: #FC3C3C;
   stroke-width: 150%;
 }
-
-
+.comment-form {
+  margin: 15vh 5vw; 
+}
+.comment-form input {
+  border-radius: 10px;
+  border-color: #006EC7;
+  padding-left: 2vw;
+  width: 50vw;
+  box-shadow: -4px 4px 15px 1px lightgrey;
+}
+.comment-form textarea {
+  border-radius: 10px;
+  padding: 2vw;
+  border-color: #006EC7;
+  width: 50vw; 
+  box-shadow: -4px 4px 20px 1px lightgrey;
+}
+.comment-form input:focus {
+  outline: none;
+}
+.comment-form textarea:focus {
+  outline: none;
+}
+.save-comment {
+  color: #006EC7;
+  border-color: #006EC7;
+  transition: cubic-bezier(0,.89,.36,.28) .1s; 
+}
+.save-comment:hover {
+  color: white;
+  background-color: #006EC7;
+}
 
 /**
   * Keyframe animations
   */
+@keyframes slide-down{
+  0%{
+    height: 0; 
+    opacity: 0;
+  }
+  50%{
+    height: 5vh;
+    opacity: 0;
+  }
+  100%{
+    height: 10vh;
+    opacity: 1;
+  }
+}
+
+
 @keyframes tilebounce {
   0% {
     transform: translateY(15%);
@@ -230,3 +286,5 @@ button {
     transform: translateY(0);
   }
 }
+
+

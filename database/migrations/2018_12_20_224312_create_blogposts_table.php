@@ -20,6 +20,7 @@ class CreateBlogpostsTable extends Migration
             $table->text('body');
             $table->json('keywords')->nullable();
             $table->bigInteger('votes');
+            $table->text('splash_path');
             $table->timestamps();
         });
     }

@@ -4,20 +4,27 @@ import Axios from 'axios';
 
 export default class ThumbsUp extends Component {
     _isMounted = false
+    _votable = true
 
     state = {
         currentVotes: null
     }
 
     upvote = () => {
-        Axios
-        .get(`/api/content/${this.props.postId}/edit`)
-        .then(response => {
-            this.setState({
-                currentVotes: response.data[0].votes
+        if(this._votable){
+            Axios
+            .get(`/api/content/${this.props.postId}/edit`)
+            .then(response => {
+                this.setState({
+                    currentVotes: response.data[0].votes
+                })
             })
-        })
+            this._votable = false
+        } else {
+            console.log("Already Voted")
+        }
     }
+    
     componentDidMount() {
         this._isMounted = true
         Axios

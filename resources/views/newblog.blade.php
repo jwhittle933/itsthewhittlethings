@@ -18,13 +18,13 @@
     <form class="create" method="POST" action="/blog">
         @csrf
         <label for="author">Author</label>
-        <input class="input new w-75" type="text" name="author" value="{{ Auth::user()->name }}">
+        <input class="input" type="text" name="author" value="{{ Auth::user()->name }}">
         <label class="main-font" for="title">Title</label>
-        <input class="input new w-75" name="title" type="text" placeholder="What's your title?">
+        <input class="input" name="title" type="text" placeholder="What's your title?">
         <label class="main-font" for="body">Body</label>
-        <textarea class="input new w-100" name="body" type="text" rows="15" placeholder="Type your text here..."></textarea>
+        <textarea class="input" name="body" type="text" rows="15" placeholder="Type your text here..."></textarea>
         <label for="tags">Tags</label>
-        <input type="text" name="tags" class="input new w-75" placeholder="Add keywords tags...">
+        <input type="text" name="tags" class="input" placeholder="Add keywords tags...">
         <button type="submit" class="save">Save</button>
     </form>
 </div>
