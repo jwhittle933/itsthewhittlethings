@@ -188,6 +188,7 @@ button {
 }
 .svg-wrapper {
   position: relative;
+  margin-right: 1.5vw; 
 }
 .thumbs-up{
   cursor: pointer;
@@ -196,10 +197,10 @@ button {
 .count { 
   position: absolute;
   top: 0;
-  left: 0;
+  left: -5px;
   height: auto; 
   width: auto; 
-  animation: thumbsup .4s;
+  animation: thumbsup .4s; 
 }
 .thumbs-up:hover,
 .comment:hover {

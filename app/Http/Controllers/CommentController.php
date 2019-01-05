@@ -64,12 +64,17 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
+     *  GET request to /comment/{id} 
+     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+
+        $affected = Comments::where('blog_id', $id)->get();
+        $number =  count($affected);
+        return $number;
     }
 
     /**
