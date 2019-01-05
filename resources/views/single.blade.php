@@ -19,12 +19,16 @@
     	<p class="main-font">{{ $data[0]->body }}</p>
     	<p class="main-font">{{ $data[0]->created_at->diffForHumans() }}</p>
     </div>
-    <div class="comment-form">
+    <div id="comment-form" class="comment-form">
+        @if(session('success'))
+            <p class="main-font ml-5">{{ session('success')}}</p>
+        @endif
     	<h2 class="main-font  mb-5">Leave a Comment:</h2>
     	<form action="/comment" method="POST">
+            @csrf
             <input type="hidden" name="id" value="{{ $data[0]->id }}">
-    		<input class="main-font" type="text" name="name" placeholder="Name">
-    		<textarea class="main-font" type="text" name="comment" rows="15" placeholder="Comment"></textarea>
+    		<input class="main-font" type="text" name="name" placeholder="Name" required>
+    		<textarea class="main-font" type="text" name="comment" rows="15" placeholder="Comment" required></textarea>
             <button type="submit" class="save-comment">Save</button>
     	</form>
     </div>

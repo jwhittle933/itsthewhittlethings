@@ -134,9 +134,6 @@ button {
   width: 75%;
   box-shadow: -6px 0px 16px -6px black;
 }
-/*.new {
-  border-bottom: 1px solid grey;
-}*/
 .save {
   background-color: #00B251;
   color: white;
@@ -228,23 +225,29 @@ button {
 }
 .comment-form input {
   border-radius: 10px;
-  border-color: #006EC7;
+  border-width: 0;
   padding-left: 2vw;
   width: 50vw;
   box-shadow: -4px 4px 15px 1px lightgrey;
+  transition: border-width cubic-bezier(0,.89,.36,.28) .5s; 
 }
 .comment-form textarea {
   border-radius: 10px;
   padding: 2vw;
-  border-color: #006EC7;
+  border-width: 0;
   width: 50vw; 
   box-shadow: -4px 4px 20px 1px lightgrey;
+  transition: border-width cubic-bezier(0,.89,.36,.28) .5s; 
 }
 .comment-form input:focus {
   outline: none;
+  border-color: #006EC7;
+  border-width: 1px;
 }
 .comment-form textarea:focus {
   outline: none;
+  border-color: #006EC7;
+  border-width: 1px;
 }
 .save-comment {
   color: #006EC7;

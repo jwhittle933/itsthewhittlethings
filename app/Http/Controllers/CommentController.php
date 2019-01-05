@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Comment; 
+use App\Comments; 
 
 class CommentController extends Controller
 {
@@ -37,25 +37,27 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        // Produces SQL State error – 
         $blogID = $request->id;
         $name = $request->name;
         $comment = $request->comment;
 
-        if($name && $comment){
-            $newComment = Comment::create([
-                'blog_id' => $blogID,
+        if($name && $comment && $blogID){
+            $newComment = Comments::create([
                 'comment' => $comment,
-                'name' => $name
+                'name' => $name,
+                'blog_id' => $blogID,
             ]);
             if($newComment){
-                return redirect('/blog/' . $blogID)->with('success', 'Thank You');
+                $thankYou = "Thank you for commenting.";
+                return redirect('/blog/' . $blogID . "/#comment-form")->with('success', 'Thank You');
             } else {
-                return redirect('/blog/' . $blogID)->with('error', "There was a problem saving your comment. This is on our end and should be fixed shortly.") 
+                return redirect('/blog/' . $blogID)->with('error', "There was a problem saving your comment. This is on our end and should be fixed shortly.");
             }
         } else if ($comment && !$name){
-            return redirect('/blog/' . $blogID)->with('error', "Please include your name.")
+            return redirect('/blog/' . $blogID)->with('error', "Please include your name.");
         } else {
-            return redirect('/blog/' . $blogID)->with('error', "Both fields are required.")
+            return redirect('/blog/' . $blogID)->with('error', "Both fields are required.");
         }
     }
 
