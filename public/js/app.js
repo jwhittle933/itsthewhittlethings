@@ -59741,7 +59741,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_Search__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         name: "filter-blogs",
-        className: "input",
+        className: "blog-search-input",
         onChange: this.updateSearchParam,
         placeholder: "Search"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -59750,17 +59750,21 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
           className: "tile padding-md"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "/blog/".concat(item.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-          className: "main-font"
-        }, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "main-font font-md"
+        }, item.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "main-font"
         }, item.author), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "main-font"
-        }, item.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, item.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          href: "/blog/".concat(item.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "tile-splash"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
           src: "https://picsum.photos/317/225/?random"
-        }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "tile-bottom"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_ThumbsUp__WEBPACK_IMPORTED_MODULE_3__["default"], {
           postId: item.id
@@ -60149,7 +60153,7 @@ function (_Component) {
         version: "1.1",
         width: "20",
         height: "20",
-        className: "comment",
+        className: "comment-icon",
         onClick: this.addComment
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
         id: "surface1"

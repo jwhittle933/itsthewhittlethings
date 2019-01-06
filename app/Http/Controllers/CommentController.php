@@ -37,7 +37,6 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        // Produces SQL State error – 
         $blogID = $request->id;
         $name = $request->name;
         $comment = $request->comment;

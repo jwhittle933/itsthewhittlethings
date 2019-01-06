@@ -28,9 +28,23 @@
             @csrf
             <input type="hidden" name="id" value="{{ $data[0]->id }}">
     		<input class="main-font" type="text" name="name" placeholder="Name" required>
-    		<textarea class="main-font" type="text" name="comment" rows="15" placeholder="Comment" required></textarea>
+    		<textarea class="main-font" type="text" name="comment" rows="10" placeholder="Comment" required></textarea>
             <button type="submit" class="save-comment">Save</button>
     	</form>
+    </div>
+    <div class="comments">
+        <h2 class="main-font font-lg">Previous comments:</h2>
+        @if ($comments)
+            @foreach ( $comments as $comment )
+                <div class="comment">
+                    <p class="main-font font-md"> {{ $comment->comment }}</p>
+                    <p class="main-font font-md"> {{ $comment->name }} </p>
+                    <p class="main-font font-md"> {{ $comment->created_at }} </p>
+                </div>
+            @endforeach
+        @elseif ( count($comments) < 1)
+            <p class="main-font font-sm">Be the first to leave a comment!</p>
+        @endif
     </div>
 </div>
 @endsection

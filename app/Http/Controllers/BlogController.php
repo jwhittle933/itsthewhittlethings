@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blogposts;
+use App\Comments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -58,15 +59,21 @@ class BlogController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * 
+     * GET request to /blog/{id}
+     * 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $affected = Blogposts::where('id', $id)->get();
+        $comments = Comments::where('blog_id', $id)->get();
         if($affected){
-            return view('single')->with('data', $affected);
+            return view('single', [
+                'data' => $affected,
+                'comments' => $comments,
+            ]);;
         } else {
             return "Uh oh. Something went wrong.";
         }

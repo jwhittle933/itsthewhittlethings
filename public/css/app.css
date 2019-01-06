@@ -1,3 +1,9 @@
+/** 
+  *
+  * HTML Elements
+  *
+*/
+
 input {
   margin-bottom: 5vh;
   display: block;
@@ -19,6 +25,13 @@ button {
   color: white;
   outline: none;
 }
+
+/** 
+  *
+  * Custom Classes
+  *
+*/
+
 .padding-md {
   padding: 3vh;
 }
@@ -30,6 +43,12 @@ button {
 }
 .font-sm {
   font-size: .75em; 
+}
+.font-md {
+  font-size: 1em;  
+}
+.font-lg {
+  font-size: 1.2em;  
 }
 .color-white {
   color: white;
@@ -124,6 +143,24 @@ button {
   border-left: 2px solid #006EC7;
   width: 50vw;
 }
+.blog-search-input {
+  width: 10vw;
+  margin-left: .5vw;
+  margin-right: 2vw;
+  padding-left: 1vw;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  font-family: Nunito;
+  transition: border-left cubic-bezier(0,.89,.36,.28) .1s;
+  transition: width cubic-bezier(0,.89,.36,.28) .1s;
+}
+.blog-search-input:focus {
+  outline: none;
+  border-bottom: 1px solid #00ADB5;
+  width: 20vw;
+}
 .newblog{
   margin-left: 15vw;
 }
@@ -165,9 +202,9 @@ button {
   color: inherit;
   animation: tilebounce .3s; 
 }
-.tile h5,
-.tile-splash {
-  cursor: pointer;
+.tile a {
+  color: inherit;
+  text-decoration: none;
 }
 .tile-splash {
   position: absolute;
@@ -190,7 +227,7 @@ button {
   position: relative;
   margin-right: 1.5vw; 
 }
-.thumbs-up{
+.thumbs-up {
   cursor: pointer;
   margin-left: 1vw;
 }
@@ -203,26 +240,27 @@ button {
   animation: thumbsup .4s; 
 }
 .thumbs-up:hover,
-.comment:hover {
+.comment-icon:hover {
   transform: scale(1.1);
 }
 .thumbs-up:hover path{
   fill: #00ADB5;
 }
 .thumbs-up path,
-.comment path {
+.comment-icon path {
   transition: scale ease-in 0.1s;
 }
-.comment {
+.comment-icon {
   cursor: pointer;
   margin-left: 1vw;
 }
-.comment:hover path {
+.comment-icon:hover path {
   fill: #FC3C3C;
   stroke-width: 150%;
 }
 .comment-form {
-  margin: 15vh 5vw; 
+  margin-top: 15vh; 
+  margin-left: 1vw; 
 }
 .comment-form input {
   border-radius: 10px;
@@ -259,10 +297,23 @@ button {
   color: white;
   background-color: #006EC7;
 }
+.comments {
+  margin-top: 15vh; 
+  height: 150vh; 
+  width: 80vw; 
+  padding: 1vw; 
+  overflow: scroll;
+  box-shadow: -4px 4px 15px 1px lightgrey;
+  border-radius: 10px; 
+}
+.comment {
+
+}
 
 /**
   * Keyframe animations
   */
+
 @keyframes slide-down{
   0%{
     height: 0; 

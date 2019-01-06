@@ -63,21 +63,22 @@ export default class BlogsComponent extends Component {
             <div className="blogsComponent">
                 <div className="searchbar">
                     <SearchIcon />
-                    <input type="text" name="filter-blogs" className="input" onChange={this.updateSearchParam} placeholder="Search"/>
+                    <input type="text" name="filter-blogs" className="blog-search-input" onChange={this.updateSearchParam} placeholder="Search"/>
                 </div>
                 <div className="blogs">
                     {
                         this.state.blogs.map( item => (
                             <div key={item.id} className="tile padding-md">
-                                <h5 className="main-font">{item.title}</h5>
+                                <a href={ `/blog/${item.id}` }><h5 className="main-font font-md">{item.title}</h5></a>
                                 <p className="main-font">{item.author}</p>
                                 <p className="main-font">{item.created_at}</p>
-                                {/* <p className="main-font">{item.body.substring(0, 200)}...</p> */}
-                                <div className="tile-splash">
-                                    <figure>
-                                        <img src="https://picsum.photos/317/225/?random"></img>
-                                    </figure>
-                                </div>
+                                <a href={ `/blog/${item.id}` }>
+                                    <div className="tile-splash">
+                                        <figure>
+                                            <img src="https://picsum.photos/317/225/?random"></img>
+                                        </figure>
+                                    </div>
+                                </a>
                                 <div className="tile-bottom">
                                     <ThumbsUp
                                         postId={item.id}
