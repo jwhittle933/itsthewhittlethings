@@ -1,10 +1,9 @@
 @extends('layouts.master')
-
-{{--  
+ 
 @section('style')
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @endsection
---}}
+
 
 
 @section('content')
@@ -23,10 +22,10 @@
     </div>
     <div class="blog-nav">
         @if ( $data[0]->id !== 1 )
-        <button class="save-comment"><a href="/blog/{{ $data[0]->id - 1 }}">Previous</a></button>
+        <a href="/blog/{{ $data[0]->id - 1 }}" class="main-font font-lg blog-nav-button">Previous</a>
         @endif
         {{-- Conditionally render 'Next' button based on final blog post id --}}
-        <button class="save-comment"><a href="/blog/{{ $data[0]->id + 1 }}">Next</a></button>
+        <a href="/blog/{{ $data[0]->id + 1 }}" class="main-font font-lg blog-nav-button">Next</a>
     </div>
     <div id="comment-form" class="comment-form">
         @if(session('success'))
@@ -44,7 +43,7 @@
     <div class="comments">
         <h2 class="main-font font-lg">Previous comments:</h2>
         @empty ( $comments[0] )
-            <p class="main-font font-sm">Be the first to leave a comment!</p>
+            <p class="main-font font-md">Be the first to leave a comment!</p>
         @endempty
         @foreach ( $comments as $comment )
             <div class="comment">

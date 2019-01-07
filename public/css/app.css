@@ -28,7 +28,7 @@ button {
 
 /** 
   *
-  * Custom Classes
+  * Classes
   *
 */
 
@@ -188,6 +188,9 @@ button {
   flex-wrap: wrap;
   flex-direction: row;
 }
+.loading {
+  margin: 0 auto;
+}
 .tile {
   position: relative;
   flex-grow: 1;
@@ -307,14 +310,20 @@ button {
 .comment {
   border-bottom: 2px solid black; 
 }
-.blog-nav{
+.blog-nav {
   display: flex;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .blog-nav a {
   color: inherit; 
   text-decoration: none; 
+}
+.blog-nav-button {
+  transition: cubic-bezier(0,.89,.36,.28) .1s; 
+}
+.blog-nav-button:hover {
+  color: #006EC7;
 }
 
 /**

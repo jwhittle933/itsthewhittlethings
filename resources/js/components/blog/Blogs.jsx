@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import SearchIcon from './svg/Search'
 import ThumbsUp from './svg/ThumbsUp'
 import CommentIcon from './svg/Comment'
+import Loading from './svg/Loading'
 
 export default class BlogsComponent extends Component {
     /**
@@ -11,6 +12,7 @@ export default class BlogsComponent extends Component {
      * Set search param based on user input and filter blog entries based on keyword search
      */
     _isMounted = false
+    _loading = true
 
     state = {
         searchParam: null,
@@ -47,6 +49,7 @@ export default class BlogsComponent extends Component {
                 })
             }
         })
+        this._loading = false
     }
 
     componentWillUnmount(){
@@ -66,6 +69,10 @@ export default class BlogsComponent extends Component {
                 </div>
                 <div className="blogs">
                     {
+                        this._loading ? 
+                        <div className="loading">
+                            <Loading />
+                        </div>  :
                         this.state.blogs.map( item => (
                             <div key={item.id} className="tile padding-md">
                                 <a href={ `/blog/${item.id}` }><h5 className="main-font font-md">{item.title}</h5></a>
