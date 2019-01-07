@@ -19,6 +19,13 @@
     	<p class="main-font">{{ $data[0]->body }}</p>
     	<p class="main-font">{{ $data[0]->created_at->diffForHumans() }}</p>
     </div>
+    <div class="blog-nav">
+        @if ( $data[0]->id !== 1 )
+        <button class="save-comment"><a href="/blog/{{ $data[0]->id - 1 }}">Previous</a></button>
+        @endif
+        {{-- Conditionally render 'Next' button based on final blog post id --}}
+        <button class="save-comment"><a href="/blog/{{ $data[0]->id + 1 }}">Next</a></button>
+    </div>
     <div id="comment-form" class="comment-form">
         @if(session('success'))
             <p class="main-font ml-5">{{ session('success')}}</p>
@@ -34,17 +41,19 @@
     </div>
     <div class="comments">
         <h2 class="main-font font-lg">Previous comments:</h2>
-        @if ($comments)
-            @foreach ( $comments as $comment )
+        @foreach ( $comments as $comment )
+            @isset ( $comment->comment)
                 <div class="comment">
                     <p class="main-font font-md"> {{ $comment->comment }}</p>
                     <p class="main-font font-md"> {{ $comment->name }} </p>
                     <p class="main-font font-md"> {{ $comment->created_at }} </p>
                 </div>
-            @endforeach
-        @elseif ( count($comments) < 1)
-            <p class="main-font font-sm">Be the first to leave a comment!</p>
-        @endif
+            @endisset
+
+            @empty($commment->comment)
+                <p class="main-font font-sm">Be the first to leave a comment!</p>
+            @endempty
+        @endforeach
     </div>
 </div>
 @endsection

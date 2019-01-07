@@ -68,7 +68,8 @@ class BlogController extends Controller
     public function show($id)
     {
         $affected = Blogposts::where('id', $id)->get();
-        $comments = Comments::where('blog_id', $id)->get();
+        $comments = Comments::where('blog_id', $id)->select('comment', 'name', 'created_at')->get();
+        //dd($comments);
         if($affected){
             return view('single', [
                 'data' => $affected,

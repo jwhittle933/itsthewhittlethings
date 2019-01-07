@@ -299,15 +299,22 @@ button {
 }
 .comments {
   margin-top: 15vh; 
-  height: 150vh; 
   width: 80vw; 
   padding: 1vw; 
-  overflow: scroll;
   box-shadow: -4px 4px 15px 1px lightgrey;
   border-radius: 10px; 
 }
 .comment {
-
+  border-bottom: 2px solid black; 
+}
+.blog-nav{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.blog-nav a {
+  color: inherit; 
+  text-decoration: none; 
 }
 
 /**
