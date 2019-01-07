@@ -16,7 +16,7 @@ export default class CommentIcon extends Component {
 
     componentDidMount() {
         this._isMounted = true
-        Axios
+        axios
         .get(`/comment/${this.props.postId}`)
         .then( response => {
             if(this._isMounted){

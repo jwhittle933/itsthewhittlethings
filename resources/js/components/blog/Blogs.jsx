@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import SearchIcon from './svg/Search'
 import ThumbsUp from './svg/ThumbsUp'
 import CommentIcon from './svg/Comment'
-import Axios from 'axios'
 
 export default class BlogsComponent extends Component {
     /**
@@ -34,7 +33,7 @@ export default class BlogsComponent extends Component {
 
     componentDidMount(){
         this._isMounted = true
-        Axios
+        axios
         .get('/api/content', {
             params: {
                 table: 'blogposts',

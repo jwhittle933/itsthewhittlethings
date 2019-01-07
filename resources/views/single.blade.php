@@ -1,8 +1,10 @@
 @extends('layouts.master')
 
+{{--  
 @section('style')
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 @endsection
+--}}
 
 
 @section('content')

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Counter from './Counter'
-import Axios from 'axios';
 
 export default class ThumbsUp extends Component {
     _isMounted = false
@@ -12,7 +11,7 @@ export default class ThumbsUp extends Component {
 
     upvote = () => {
         if(this._votable){
-            Axios
+            axios
             .get(`/api/content/${this.props.postId}/edit`)
             .then(response => {
                 this.setState({
@@ -27,7 +26,7 @@ export default class ThumbsUp extends Component {
     
     componentDidMount() {
         this._isMounted = true
-        Axios
+        axios
         .get(`/api/content/${this.props.postId}`)
         .then( response => {
             if(this._isMounted){
