@@ -41,18 +41,15 @@
     </div>
     <div class="comments">
         <h2 class="main-font font-lg">Previous comments:</h2>
+        @empty ( $comments[0] )
+            <p class="main-font font-sm">Be the first to leave a comment!</p>
+        @endempty
         @foreach ( $comments as $comment )
-            @isset ( $comment->comment)
-                <div class="comment">
-                    <p class="main-font font-md"> {{ $comment->comment }}</p>
-                    <p class="main-font font-md"> {{ $comment->name }} </p>
-                    <p class="main-font font-md"> {{ $comment->created_at }} </p>
-                </div>
-            @endisset
-
-            @empty($commment->comment)
-                <p class="main-font font-sm">Be the first to leave a comment!</p>
-            @endempty
+            <div class="comment">
+                <p class="main-font font-md"> {{ $comment->comment }}</p>
+                <p class="main-font font-md"> {{ $comment->name }} </p>
+                <p class="main-font font-md"> {{ $comment->created_at }} </p>
+            </div>
         @endforeach
     </div>
 </div>
