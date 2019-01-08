@@ -17,15 +17,25 @@
         <h2 class="text-center main-font color-white mt-5">{{$data[0]->author}}</h2>
     </div>
     <div >
-    	<p class="main-font">{{ $data[0]->body }}</p>
+    	<p class="main-font">{!! nl2br($data[0]->body) !!}</p>
     	<p class="main-font">{{ $data[0]->created_at->diffForHumans() }}</p>
     </div>
     <div class="blog-nav">
         @if ( $data[0]->id !== 1 )
-        <a href="/blog/{{ $data[0]->id - 1 }}" class="main-font font-lg blog-nav-button">Previous</a>
+        <a href="/blog/{{ $data[0]->id - 1 }}" class="main-font font-lg blog-nav-button">
+            <svg viewbox="0 0 40 40" class="blog-nav-arrow">
+                <path d="M20 10 L10 20 L20 30" ></path>
+            </svg>
+            Previous
+        </a>
         @endif
         {{-- Conditionally render 'Next' button based on final blog post id --}}
-        <a href="/blog/{{ $data[0]->id + 1 }}" class="main-font font-lg blog-nav-button">Next</a>
+        <a href="/blog/{{ $data[0]->id + 1 }}" class="main-font font-lg blog-nav-button">
+            Next
+            <svg viewbox="0 0 40 40" class="blog-nav-arrow" class="blog-nav-arrow">
+                <path d="M20 10 L30 20 L20 30" ></path>
+            </svg>
+        </a>
     </div>
     <div id="comment-form" class="comment-form">
         @if(session('success'))
@@ -41,15 +51,17 @@
     	</form>
     </div>
     <div class="comments">
-        <h2 class="main-font font-lg">Previous comments:</h2>
+        <h3 class="main-font">Previous comments:</h3>
         @empty ( $comments[0] )
             <p class="main-font font-md">Be the first to leave a comment!</p>
         @endempty
         @foreach ( $comments as $comment )
             <div class="comment">
-                <p class="main-font font-md"> {{ $comment->comment }}</p>
-                <p class="main-font font-md"> {{ $comment->name }} </p>
-                <p class="main-font font-md"> {{ $comment->created_at }} </p>
+                <p class="main-font font-lg">{{ $comment->name }} ({{ $comment->created_at ? $comment->created_at->diffForHumans() : '-' }}):</p>
+                <p class="main-font font-md"> {!! nl2br($comment->comment) !!}</p>
+                @if (Auth::user())
+                <a href="" class="main-font font-sm comment-delete">Delete</a>
+                @endif
             </div>
         @endforeach
     </div>

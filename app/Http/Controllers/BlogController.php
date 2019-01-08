@@ -42,13 +42,14 @@ class BlogController extends Controller
         $author = $request->author;
         $tags = $request->tags;
 
-        //Use Blogposts model to have auto generated timestamps
         $submit = Blogposts::create([
             'title' => $title,
             'author' => $author,
             'body' => $body,
-            'keywords' => $tags, //tags fail on submit if not in ["", "", ...] format
-            'votes' => 1, //default 1 vote for new post
+            //tags fail on submit if not in ["", "", ...] format
+            'keywords' => $tags,
+            //default 1 vote for new post
+            'votes' => 1, 
         ]);
         if ($submit){
             return view('/blog')->with('test', "User Dashboard");
