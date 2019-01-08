@@ -7,7 +7,11 @@
 @section('content')
 
 <!-- Mount SideNav.jsx -->
-<div id="side-nav" data-text="{!! $test !!}"></div>
+@if (Auth::user())
+<div id="side-nav" data-user="{{ Auth::user()->name }}"></div>
+@else 
+<div id="side-nav"></div>
+@endif
 
 <div class="main">
     <div class="header padding-md">

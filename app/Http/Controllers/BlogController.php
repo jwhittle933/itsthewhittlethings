@@ -52,9 +52,9 @@ class BlogController extends Controller
             'votes' => 1, 
         ]);
         if ($submit){
-            return view('/blog')->with('test', "User Dashboard");
+            return view('/blog');
         } else {
-            return view('newblog')->with('test', "User Dashboard");
+            return view('newblog');
         }
     }
 

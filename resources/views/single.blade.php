@@ -9,15 +9,19 @@
 @section('content')
 
 <!-- Mount SideNav.jsx -->
+@if (Auth::user())
+<div id="side-nav" data-user="{{ Auth::user()->name }}"></div>
+@else 
 <div id="side-nav"></div>
+@endif
 
 <div class="main">
     <div class="header padding-md">
         <h1 class="text-center main-font color-white position-relative">{{ $data[0]->title }}</h1>
         <h2 class="text-center main-font color-white mt-5">{{$data[0]->author}}</h2>
     </div>
-    <div >
-    	<p class="main-font">{!! nl2br($data[0]->body) !!}</p>
+    <div class="post">
+    	<p class="main-font first-letter">{!! nl2br($data[0]->body) !!}</p>
     	<p class="main-font">{{ $data[0]->created_at->diffForHumans() }}</p>
     </div>
     <div class="blog-nav">

@@ -9,6 +9,7 @@ class SideNav extends Component {
         parentingSubView: false,
         churchSubView: false,
         booksSubView: false,
+        auth: false
     }
 
     toggleFood = () => {
@@ -94,7 +95,11 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <a className="link main-font" href="/home">{this.props.text}</a>
+
+                    { this.props.user ? 
+                        <a className="link main-font" href="/home">{this.props.user}</a> :
+                        <a className="link main-font" href="/home">Login</a>
+                    }
                 </div>
              </nav>
         );

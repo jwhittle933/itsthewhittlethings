@@ -59851,7 +59851,8 @@ function (_Component) {
       foodSubView: false,
       parentingSubView: false,
       churchSubView: false,
-      booksSubView: false
+      booksSubView: false,
+      auth: false
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggleFood", function () {
@@ -59947,10 +59948,13 @@ function (_Component) {
         article2: "The Sucky Side of Seminary",
         article3: "He's not that Smart",
         view: this.state.booksSubView
-      }) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }) : null, this.props.user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "link main-font",
         href: "/home"
-      }, this.props.text)));
+      }, this.props.user) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "link main-font",
+        href: "/home"
+      }, "Login")));
     }
   }]);
 
