@@ -28,7 +28,7 @@
         <input class="input" name="title" type="text" placeholder="What's your title?">
         <label class="main-font" for="body">Body</label>
         <textarea class="input" name="body" type="text" rows="15" placeholder="Type your text here..."></textarea>
-        <label for="tags">Tags</label>
+        <label for="tags">Tags <small>(Comma seperated, e.g., Food, South, Cars)</small></label>
         <input type="text" name="tags" class="input" placeholder="Add keywords tags...">
         <button type="submit" class="save">Save</button>
     </form>

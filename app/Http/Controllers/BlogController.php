@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog')->with('test', "User Dashboard");
+        return view('blog');
     }
 
     /**
@@ -26,7 +26,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('newblog')->with('test', "User Dashboard");
+        return view('newblog');
     }
 
     /**
@@ -41,6 +41,8 @@ class BlogController extends Controller
         $body = $request->body;
         $author = $request->author;
         $tags = $request->tags;
+        $tags = "[\"" . str_replace(", ", "\", \"", $tags) . "\"]";
+        //dd($tags);
 
         $submit = Blogposts::create([
             'title' => $title,
@@ -68,15 +70,19 @@ class BlogController extends Controller
      */
     public function show($id)
     {
+        //TODO: Handle errors for Undefined Offset
         $affected = Blogposts::where('id', $id)->get();
         $comments = Comments::where('blog_id', $id)->select('id', 'comment', 'name', 'created_at')->get();
-        if($affected){
+
+
+
+        if(count($affected) !== 0){
             return view('single', [
                 'data' => $affected,
                 'comments' => $comments,
-            ]);;
+            ]);
         } else {
-            return "Uh oh. Something went wrong.";
+            return redirect('blog');
         }
     }
 

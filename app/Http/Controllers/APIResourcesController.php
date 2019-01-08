@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Blogposts;
 
 class APIResourcesController extends Controller
 {
@@ -21,7 +22,8 @@ class APIResourcesController extends Controller
         $what = $request->what;
 
         if($which === "all"){ //populate blog main page
-            $data = DB::table($table)->select('id', 'title', 'author')->get();
+            //$data = DB::table($table)->select('id', 'title', 'author')->get();
+            $data = Blogposts::all();
         } else if($which === "specific"){
             $data = DB::table($table)->select($what)->get();
         }

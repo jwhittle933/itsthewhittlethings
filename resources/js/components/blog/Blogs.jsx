@@ -4,6 +4,8 @@ import SearchIcon from './svg/Search'
 import ThumbsUp from './svg/ThumbsUp'
 import CommentIcon from './svg/Comment'
 import Loading from './svg/Loading'
+import Moment from 'react-moment'
+import 'moment-timezone'
 
 export default class BlogsComponent extends Component {
     /**
@@ -32,6 +34,7 @@ export default class BlogsComponent extends Component {
         },
         tileActive: {}
     }
+
 
     componentDidMount(){
         this._isMounted = true
@@ -77,7 +80,6 @@ export default class BlogsComponent extends Component {
                             <div key={item.id} className="tile padding-md">
                                 <a href={ `/blog/${item.id}` }><h5 className="main-font font-md">{item.title}</h5></a>
                                 <p className="main-font">{item.author}</p>
-                                <p className="main-font">{item.created_at}</p>
                                 <a href={ `/blog/${item.id}` }>
                                     <div className="tile-splash">
                                         <figure>
@@ -92,6 +94,7 @@ export default class BlogsComponent extends Component {
                                     <CommentIcon
                                         postId={item.id}
                                     />
+                                    <p className="main-font font-sm"><Moment date={item.created_at} /></p>
                                 </div>
                             </div>
                         ))

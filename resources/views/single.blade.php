@@ -16,6 +16,7 @@
 @endif
 
 <div class="main">
+
     <div class="header padding-md">
         <h1 class="text-center main-font color-white position-relative">{{ $data[0]->title }}</h1>
         <h2 class="text-center main-font color-white mt-5">{{$data[0]->author}}</h2>
