@@ -10,29 +10,23 @@ import 'moment-timezone'
 export default class BlogsComponent extends Component {
     /**
      * TODO:
-     * Implement search filter functionality
+     * Implement search filter algorithm
      * Set search param based on user input and filter blog entries based on keyword search
+     * Create progressive loading of blog posts for pagination
      */
     _isMounted = false
     _loading = true
 
     state = {
-        searchParam: null,
+        //blogs will be Array of Objects
         blogs: [],
-        tile: {
-            position: "relative",
-            flexGrow: 1,
-            margin: "2vw 2vh",
-            width: "300px",
-            height: "350px",
-            overflow: "hidden",
-            borderRadius: "8px",
-            boxShadow: "-4px 4px 20px 1px lightgrey",
-            textDecoration: "none",
-            color: "inherit",
-            animation: "tilebounce .5s",
-        },
-        tileActive: {}
+        /**
+          * filteredBlogs holds same data as blogs on mount,
+          * but will change based on search param
+          * blogs will hold entire data set
+        */
+        filteredBlogs: [],
+        filterParam: ""
     }
 
 
@@ -47,8 +41,10 @@ export default class BlogsComponent extends Component {
         })
         .then( response => {
             if(this._isMounted){
+                let data = response.data
                 this.setState({
-                    blogs: response.data
+                    blogs: data,
+                    filteredBlogs: data
                 })
             }
         })
@@ -59,8 +55,26 @@ export default class BlogsComponent extends Component {
         this._isMounted = false
     }
 
-    updateSearchParam = (e) => {
+    updateSearchParam = e => {
         let value = e.target.value
+        let searchBody = this.state.blogs
+        let newAr = []
+        if (e.keyCode === 13){
+            this._loading = true
+            searchBody.map( item => {
+                let tags = item.keywords.replace(/\\(.)/g, "")
+                                        .replace(/,/g, "")
+                                        .replace(/\[/g, "")
+                                        .replace(/\]/g, "")
+                                        .replace(/\"/g, "")
+                                        .split(" ")
+                tags.forEach( el => el.toUpperCase() === value.toUpperCase() ? newAr.push(item) : null)
+            })
+            this.setState({
+                filteredBlogs: newAr.length === 0 ? this.state.blogs : newAr
+            })
+            this._loading = false
+        }
     }
 
     render() {
@@ -68,7 +82,13 @@ export default class BlogsComponent extends Component {
             <div className="blogsComponent">
                 <div className="searchbar">
                     <SearchIcon />
-                    <input type="text" name="filter-blogs" className="blog-search-input" onChange={this.updateSearchParam} placeholder="Search"/>
+                    <input  type="text" 
+                            name="filter-blogs" 
+                            className="blog-search-input" 
+                            onKeyDown={this.updateSearchParam} 
+                            //value={this.state.filterParam}
+                            placeholder="Search"
+                     />
                 </div>
                 <div className="blogs">
                     {
@@ -76,7 +96,7 @@ export default class BlogsComponent extends Component {
                         <div className="loading">
                             <Loading />
                         </div>  :
-                        this.state.blogs.map( item => (
+                        this.state.filteredBlogs.map( item => (
                             <div key={item.id} className="tile padding-md">
                                 <a href={ `/blog/${item.id}` }><h5 className="main-font font-md">{item.title}</h5></a>
                                 <p className="main-font">{item.author}</p>
@@ -94,9 +114,14 @@ export default class BlogsComponent extends Component {
                                     <CommentIcon
                                         postId={item.id}
                                     />
-                                    <p className="main-font font-sm"><Moment date={item.created_at} /></p>
+                                    <p className="main-font font-sm">
+                                        <Moment 
+                                            date={item.created_at} 
+                                            format={"MM/DD/YYYY"}
+                                        />
+                                    </p>
                                 </div>
-                            </div>
+                            </div> 
                         ))
                     }
                 </div>

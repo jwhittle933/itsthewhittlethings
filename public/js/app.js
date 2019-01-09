@@ -77632,26 +77632,38 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_loading", true);
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      searchParam: null,
+      //blogs will be Array of Objects
       blogs: [],
-      tile: {
-        position: "relative",
-        flexGrow: 1,
-        margin: "2vw 2vh",
-        width: "300px",
-        height: "350px",
-        overflow: "hidden",
-        borderRadius: "8px",
-        boxShadow: "-4px 4px 20px 1px lightgrey",
-        textDecoration: "none",
-        color: "inherit",
-        animation: "tilebounce .5s"
-      },
-      tileActive: {}
+
+      /**
+        * filteredBlogs holds same data as blogs on mount,
+        * but will change based on search param
+        * blogs will hold entire data set
+      */
+      filteredBlogs: [],
+      filterParam: ""
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updateSearchParam", function (e) {
       var value = e.target.value;
+      var searchBody = _this.state.blogs;
+      var newAr = [];
+
+      if (e.keyCode === 13) {
+        _this._loading = true;
+        searchBody.map(function (item) {
+          var tags = item.keywords.replace(/\\(.)/g, "").replace(/,/g, "").replace(/\[/g, "").replace(/\]/g, "").replace(/\"/g, "").split(" ");
+          tags.forEach(function (el) {
+            return el.toUpperCase() === value.toUpperCase() ? newAr.push(item) : null;
+          });
+        });
+
+        _this.setState({
+          filteredBlogs: newAr.length === 0 ? _this.state.blogs : newAr
+        });
+
+        _this._loading = false;
+      }
     });
 
     return _this;
@@ -77670,8 +77682,11 @@ function (_Component) {
         }
       }).then(function (response) {
         if (_this2._isMounted) {
+          var data = response.data;
+
           _this2.setState({
-            blogs: response.data
+            blogs: data,
+            filteredBlogs: data
           });
         }
       });
@@ -77693,13 +77708,14 @@ function (_Component) {
         type: "text",
         name: "filter-blogs",
         className: "blog-search-input",
-        onChange: this.updateSearchParam,
+        onKeyDown: this.updateSearchParam //value={this.state.filterParam}
+        ,
         placeholder: "Search"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "blogs"
       }, this._loading ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "loading"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_Loading__WEBPACK_IMPORTED_MODULE_5__["default"], null)) : this.state.blogs.map(function (item) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svg_Loading__WEBPACK_IMPORTED_MODULE_5__["default"], null)) : this.state.filteredBlogs.map(function (item) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: item.id,
           className: "tile padding-md"
@@ -77724,7 +77740,8 @@ function (_Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           className: "main-font font-sm"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_moment__WEBPACK_IMPORTED_MODULE_6___default.a, {
-          date: item.created_at
+          date: item.created_at,
+          format: "MM/DD/YYYY"
         }))));
       })));
     }
