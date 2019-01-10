@@ -120,6 +120,15 @@ button {
   border-left: 2px solid white;
   padding-left: 2px;
 }
+.search-instructions {
+  background-color: black; 
+  color: white; 
+  opacity: .7;
+  height: 4vh;
+  border-radius: 5px;
+  padding: 3px;
+  margin: 1vh;
+}
 .searchbar {
   display: flex;
   justify-content: flex-end;
@@ -262,7 +271,7 @@ button {
   stroke-width: 150%;
 }
 .post {
-  
+
 }
 .first-letter:first-child:first-letter {
   color: #03005E;
@@ -353,13 +362,24 @@ button {
   border-right: 1px solid lightgrey;
 }
 .comment-delete {
-  color: red;
-  transition: letter-spacing ease-in-out .2s;
+  border: none;
+  outline: none;
+  width: auto; 
+  height: auto;
+  padding: 0;
 }
-.comment-delete:hover {
-  color: #DA0212;
-  text-decoration: none; 
-  letter-spacing: 2px; 
+.comment-interact {
+  display: flex; 
+  justify-content: left;
+  align-items: center;
+}
+.trash {
+  height: 3vh;
+  width: auto;
+}
+.like {
+ height: 3vh;
+ width: auto;
 }
 
 /**

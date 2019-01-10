@@ -9,7 +9,8 @@ class Comments extends Model
     protected $fillable = [
     	'comment', 
     	'name', 
-    	'blog_id'
+    	'blog_id',
+    	'votes'
     ];
 
     protected $dates = [

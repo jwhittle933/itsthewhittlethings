@@ -61,12 +61,26 @@
             <p class="main-font font-md">Be the first to leave a comment!</p>
         @endempty
         @foreach ( $comments as $comment )
+            <!-- Implement a comment rating system that displays the top rated comment at the top -->
             <div class="comment">
                 <p class="main-font font-lg">{{ $comment->name }} ({{ $comment->created_at ? $comment->created_at->diffForHumans() : '-' }}):</p>
                 <p class="main-font font-md"> {!! nl2br($comment->comment) !!}</p>
-                @if (Auth::user())
-                <a href="" class="main-font font-sm comment-delete">Delete</a>
-                @endif
+                <div class="comment-interact">
+                    @if (Auth::user())
+                    <form action="/comment/{{ $comment->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="main-font font-sm comment-delete">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="trash"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/></svg>
+                        </button>
+                    </form>
+                    @endif
+                    <form action="/comment/{{ $comment->id }}" method="POST">
+                        <button type="submit" class="main-font font-sm comment-delete">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="like"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+                        </button>
+                    </form>
+                </div>
             </div>
         @endforeach
     </div>

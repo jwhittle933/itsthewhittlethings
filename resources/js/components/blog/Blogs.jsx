@@ -17,6 +17,7 @@ export default class BlogsComponent extends Component {
     _isMounted = false
     _loading = true
 
+
     state = {
         //blogs will be Array of Objects
         blogs: [],
@@ -26,7 +27,7 @@ export default class BlogsComponent extends Component {
           * blogs will hold entire data set
         */
         filteredBlogs: [],
-        filterParam: ""
+        filterParam: "",
     }
 
 
@@ -55,11 +56,17 @@ export default class BlogsComponent extends Component {
         this._isMounted = false
     }
 
+    componentDidUpdate(prevProps) {
+        this._typing = false
+    }
+
+    /* Filter through blog posts by input parameter */
     updateSearchParam = e => {
         let value = e.target.value
+        console.log(e.which)
         let searchBody = this.state.blogs
         let newAr = []
-        if (e.keyCode === 13){
+        if (e.keyCode === 13){  
             this._loading = true
             searchBody.map( item => {
                 let tags = item.keywords.replace(/\\(.)/g, "")
@@ -71,7 +78,7 @@ export default class BlogsComponent extends Component {
                 tags.forEach( el => el.toUpperCase() === value.toUpperCase() ? newAr.push(item) : null)
             })
             this.setState({
-                filteredBlogs: newAr.length === 0 ? this.state.blogs : newAr
+                filteredBlogs: newAr.length === 0 ? this.state.blogs : newAr,
             })
             this._loading = false
         }
@@ -85,8 +92,7 @@ export default class BlogsComponent extends Component {
                     <input  type="text" 
                             name="filter-blogs" 
                             className="blog-search-input" 
-                            onKeyDown={this.updateSearchParam} 
-                            //value={this.state.filterParam}
+                            onKeyDown={this.updateSearchParam}
                             placeholder="Search"
                      />
                 </div>
