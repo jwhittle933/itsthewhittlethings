@@ -1,9 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
 import ReactDOM from 'react-dom';
-
 import SubNav from './SubNav'
 
 class SideNav extends Component {
+
+    /** 
+      * TODO: Alternate between "Login" option for unauthenticated user
+      * and Authenticated User toolbox that displays user's name and 
+      * toggles a menu with create/delete/admin options
+      *
+    */
+
     state = {
         foodSubView: false,
         parentingSubView: false,

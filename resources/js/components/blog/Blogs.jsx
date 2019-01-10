@@ -10,9 +10,7 @@ import 'moment-timezone'
 export default class BlogsComponent extends Component {
     /**
      * TODO:
-     * Implement search filter algorithm
-     * Set search param based on user input and filter blog entries based on keyword search
-     * Create progressive loading of blog posts for pagination
+     * Create progressive loading of blog posts or pagination
      */
     _isMounted = false
     _loading = true
@@ -29,7 +27,6 @@ export default class BlogsComponent extends Component {
         filteredBlogs: [],
         filterParam: "",
     }
-
 
     componentDidMount(){
         this._isMounted = true
