@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import React from 'react'
 
 const SubNav = ({ article1, article2, article3 }) =>
     <div id="subNav" className="subNav">

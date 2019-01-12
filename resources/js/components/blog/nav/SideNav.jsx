@@ -20,7 +20,6 @@ class SideNav extends Component {
         parentingSubView: false,
         churchSubView: false,
         booksSubView: false,
-        auth: false,
         loggedIn: false,
     }
 
@@ -28,35 +27,23 @@ class SideNav extends Component {
         let newState = this.state.foodSubView ? false : true
         this.setState({
             foodSubView: newState,
-            parentingSubView: false,
-            churchSubView: false,
-            booksSubView: false,
         })
     }
     toggleParenting = () => {
         let newState = this.state.parentingSubView ? false : true
         this.setState({
-            foodSubView: false,
             parentingSubView: newState,
-            churchSubView: false,
-             booksSubView: false,
         })
     }
     toggleChurch = () => {
         let newState = this.state.churchSubView ? false : true
         this.setState({
-            foodSubView: false,
-            parentingSubView: false,
             churchSubView: newState,
-             booksSubView: false,
         })
     }
     togglePopular = () => {
         let newState = this.state. booksSubView ? false : true
         this.setState({
-            foodSubView: false,
-            parentingSubView: false,
-            churchSubView: false,
              booksSubView: newState,
         })
     }
@@ -114,7 +101,7 @@ class SideNav extends Component {
             {/* TODO: Create hover help for User and Login component that identifies what each represents */}
 
                 {
-                    this.state.loggedIn ?
+                    this.props.user ?
                     <User user={this.props.user} /> :
                     <Login />
                 }

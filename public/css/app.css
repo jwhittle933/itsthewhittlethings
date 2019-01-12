@@ -26,11 +26,7 @@ button {
   outline: none;
 }
 
-/** 
-  *
-  * Classes
-  *
-*/
+/* Classes */
 
 .padding-md {
   padding: 3vh;
