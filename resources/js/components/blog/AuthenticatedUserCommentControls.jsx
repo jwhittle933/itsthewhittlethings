@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Trash from './svg/Trash'
 import LikeComment from './svg/LikeComment'
+import Axios from 'axios'
 
 export default class AuthenticatedUserCommentControls extends Component {
     /** 
@@ -12,8 +13,16 @@ export default class AuthenticatedUserCommentControls extends Component {
     */
 
 	state = {
-
+        auth: false
 	}
+
+    trashComment = () => {
+        //Axios.delete('/comments/' + id)
+    }
+
+    likeComment = () => {
+        //Axios.patch('/comments/' + id)
+    }
 
 
 	render(){
@@ -36,5 +45,10 @@ export default class AuthenticatedUserCommentControls extends Component {
 
 
 if (document.getElementById('authenticated-user')) {
-    ReactDOM.render(<AuthenticatedUserCommentControls />, document.getElementById('authenticated-user'));
+    const element = document.getElementById('authenticated-user')
+    const props = Object.assign({}, element.dataset)
+    ReactDOM.render(<AuthenticatedUserCommentControls {...props} />, element);
 }
+
+
+

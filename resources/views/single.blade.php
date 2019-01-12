@@ -65,7 +65,7 @@
             <div class="comment">
                 <p class="main-font font-lg">{{ $comment->name }} ({{ $comment->created_at ? $comment->created_at->diffForHumans() : '-' }}):</p>
                 <p class="main-font font-md"> {!! nl2br($comment->comment) !!}</p>
-                <div class="comment-interact">
+                <div id="authenticated-user" class="comment-interact">
                     @if (Auth::user())
                     <form action="/comment/{{ $comment->id }}" method="POST">
                         @csrf
@@ -76,6 +76,7 @@
                     </form>
                     @endif
                     <form action="/comment/{{ $comment->id }}" method="POST">
+                        @method('PATCH')
                         <button type="submit" class="main-font font-sm comment-delete">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="like"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
                         </button>

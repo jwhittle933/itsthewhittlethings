@@ -26,6 +26,7 @@ export default class BlogsComponent extends Component {
         */
         filteredBlogs: [],
         filterParam: "",
+        typing: false
     }
 
     componentDidMount(){
@@ -53,12 +54,9 @@ export default class BlogsComponent extends Component {
         this._isMounted = false
     }
 
-    componentDidUpdate(prevProps) {
-        this._typing = false
-    }
-
     /* Filter through blog posts by input parameter */
     updateSearchParam = e => {
+        this.setState({ typing: true})
         let value = e.target.value
         console.log(e.which)
         let searchBody = this.state.blogs
@@ -74,19 +72,34 @@ export default class BlogsComponent extends Component {
                                         .split(" ")
                 tags.forEach( el => el.toUpperCase() === value.toUpperCase() ? newAr.push(item) : null)
             })
-            this.setState({
-                filteredBlogs: newAr.length === 0 ? this.state.blogs : newAr,
-            })
+            this.setState({ filteredBlogs: newAr.length === 0 ? this.state.blogs : newAr })
             this._loading = false
         }
+    }
+
+    focus = () => {
+        this.setState({typing: true})
+    }
+
+    blur = () => {
+        this.setState({typing: false})
     }
 
     render() {
         return (
             <div className="blogsComponent">
                 <div className="searchbar">
+
+                {
+                    this.state.typing ?
+                    <div className="search-instructions">
+                        <p className="main-font font-sm">Press Enter</p>
+                    </div> : null
+                }
                     <SearchIcon />
-                    <input  type="text" 
+                    <input  onFocus={this.focus}
+                            onBlur={this.blur}
+                            type="text" 
                             name="filter-blogs" 
                             className="blog-search-input" 
                             onKeyDown={this.updateSearchParam}
@@ -128,6 +141,7 @@ export default class BlogsComponent extends Component {
                         ))
                     }
                 </div>
+                <div className="font-sm">Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"              title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
             </div>
         )
     }

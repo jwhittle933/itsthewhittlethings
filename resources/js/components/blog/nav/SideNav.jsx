@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom';
 import SubNav from './SubNav'
+import Login from '../svg/Login'
+import User from '../svg/User'
 
 class SideNav extends Component {
 
@@ -9,6 +11,8 @@ class SideNav extends Component {
       * and Authenticated User toolbox that displays user's name and 
       * toggles a menu with create/delete/admin options
       *
+      * Move each SideBar item into an HOC. create single toggle control method for each based on
+      * unique identifier
     */
 
     state = {
@@ -108,8 +112,12 @@ class SideNav extends Component {
                         <a className="link main-font" href="/home">Login</a>
                     }
                 </div>
-             </nav>
-        );
+                <div className="user-direct">
+                    <Login />
+                    <User />
+                </div>
+            </nav>
+        )
     }
 }
 

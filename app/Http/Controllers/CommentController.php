@@ -70,7 +70,6 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-
         $affected = Comments::where('blog_id', $id)->get();
         $number =  count($affected);
         return $number;
@@ -90,6 +89,10 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
+     * PUT/PATCH Requests to /comments/{id} 
+     *
+     * Used for updating individual comment likes
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -101,6 +104,8 @@ class CommentController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * DELETE requests to /comments/{id}
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

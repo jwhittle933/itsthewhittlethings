@@ -79,6 +79,34 @@ button {
   overflow: scroll;
   padding-top: 20px;
 }
+.user-direct {
+  display: block;
+  bottom: 0; 
+}
+.login-icon {
+  position: fixed;
+  top: 96vh;
+  left: 13vw;
+  width: 1.5vw; 
+  height: auto; 
+}
+.login-icon path {
+  fill: white; 
+}
+.user-icon {
+  position: fixed;
+  top: 95vh;
+  left: 10vw;
+  width: 2vw; 
+  height: auto;  
+}
+.user-icon path {
+  fill: white; 
+  stroke:none;
+  fill-rule:nonzero;
+  fill:rgb(255,255,255);
+  fill-opacity:1;
+}
 .link {
   display: block;
   font-family: Nunito;
@@ -125,9 +153,11 @@ button {
   color: white; 
   opacity: .7;
   height: 4vh;
+  width: 6vw;
   border-radius: 5px;
   padding: 3px;
   margin: 1vh;
+  text-align: center; 
 }
 .searchbar {
   display: flex;
