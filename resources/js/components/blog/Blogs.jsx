@@ -89,13 +89,6 @@ export default class BlogsComponent extends Component {
         return (
             <div className="blogsComponent">
                 <div className="searchbar">
-
-                {
-                    this.state.typing ?
-                    <div className="search-instructions">
-                        <p className="main-font font-sm">Press Enter</p>
-                    </div> : null
-                }
                     <SearchIcon />
                     <input  onFocus={this.focus}
                             onBlur={this.blur}
@@ -105,6 +98,12 @@ export default class BlogsComponent extends Component {
                             onKeyDown={this.updateSearchParam}
                             placeholder="Search"
                      />
+                    {
+                        this.state.typing ?
+                        <div className="search-instructions">
+                            <p className="main-font font-sm">Press Enter</p>
+                        </div> : null
+                    }
                 </div>
                 <div className="blogs">
                     {
@@ -126,6 +125,7 @@ export default class BlogsComponent extends Component {
                                 <div className="tile-bottom">
                                     <ThumbsUp
                                         postId={item.id}
+                                        likes={item.votes}
                                     />
                                     <CommentIcon
                                         postId={item.id}

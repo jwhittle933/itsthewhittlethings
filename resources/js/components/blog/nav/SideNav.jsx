@@ -20,7 +20,8 @@ class SideNav extends Component {
         parentingSubView: false,
         churchSubView: false,
         booksSubView: false,
-        auth: false
+        auth: false,
+        loggedIn: false
     }
 
     toggleFood = () => {
@@ -62,9 +63,7 @@ class SideNav extends Component {
     render() {
         return (
             <nav className="sideNavComponent">
-                <div>
-                    <a className="sidenav-lead" href="/"><h2>IWT</h2></a>
-                </div>
+                <a className="sidenav-lead font-xl" href="/">IWT</a>
                 <div className="sidenav-links">
                     <p id="Food" className="link main-font" onClick={ this.toggleFood }>Food</p>
                     {  this.state.foodSubView ?
@@ -107,14 +106,16 @@ class SideNav extends Component {
                         : null
                     }
 
-                    { this.props.user ? 
-                        <a className="link main-font" href="/home">{this.props.user}</a> :
-                        <a className="link main-font" href="/home">Login</a>
-                    }
                 </div>
                 <div className="user-direct">
+
+            {/* TODO: Create hover help for User and Login component that identifies what each represents */}
+
+                {
+                    this.state.loggedIn ?
+                    <User user={this.props.user} /> :
                     <Login />
-                    <User />
+                }
                 </div>
             </nav>
         )

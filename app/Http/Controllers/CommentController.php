@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comments; 
+use App\Blogposts;
 
 class CommentController extends Controller
 {
@@ -47,6 +48,7 @@ class CommentController extends Controller
                 'name' => $name,
                 'blog_id' => $blogID,
             ]);
+            //TODO: Increment comment_count on Blogposts table
             if($newComment){
                 $thankYou = "Thank you for commenting.";
                 return redirect('/blog/' . $blogID . "/#comment-form")->with('success', 'Thank You');

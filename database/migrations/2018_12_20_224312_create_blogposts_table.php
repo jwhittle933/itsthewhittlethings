@@ -20,6 +20,8 @@ class CreateBlogpostsTable extends Migration
             $table->text('body');
             $table->json('keywords')->nullable();
             $table->bigInteger('votes');
+            //comment_count not migrated
+            $table->integer('comment_count')->nullable();
             $table->text('splash_path')->nullable();
             $table->timestamps();
         });

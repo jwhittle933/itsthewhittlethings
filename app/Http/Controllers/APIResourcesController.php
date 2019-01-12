@@ -22,7 +22,7 @@ class APIResourcesController extends Controller
         $what = $request->what;
 
         if($which === "all"){ //populate blog main page
-            //$data = DB::table($table)->select('id', 'title', 'author')->get();
+            //The only data not being used on the blog main page is the body
             $data = Blogposts::all();
         } else if($which === "specific"){
             $data = DB::table($table)->select($what)->get();
