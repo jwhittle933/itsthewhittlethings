@@ -21,7 +21,7 @@ class SideNav extends Component {
         churchSubView: false,
         booksSubView: false,
         auth: false,
-        loggedIn: false
+        loggedIn: false,
     }
 
     toggleFood = () => {
@@ -60,6 +60,8 @@ class SideNav extends Component {
              booksSubView: newState,
         })
     }
+
+
     render() {
         return (
             <nav className="sideNavComponent">

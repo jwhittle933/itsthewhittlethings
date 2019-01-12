@@ -125,7 +125,7 @@ export default class BlogsComponent extends Component {
                                 <div className="tile-bottom">
                                     <ThumbsUp
                                         postId={item.id}
-                                        likes={item.votes}
+                                        vote={this.upvote}
                                     />
                                     <CommentIcon
                                         postId={item.id}
