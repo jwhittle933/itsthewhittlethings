@@ -10,7 +10,9 @@ import 'moment-timezone'
 export default class BlogsComponent extends Component {
     /**
      * TODO:
-     * Create progressive loading of blog posts or pagination
+     * Create progressive loading of blog posts or pagination to show most recent blogs
+     *
+     * Create view that handles a list of all blogposts with filtering methods 
      */
     _isMounted = false
     _loading = true
@@ -54,11 +56,17 @@ export default class BlogsComponent extends Component {
         this._isMounted = false
     }
 
+    //Passed down as prop to ThumbsUp
+    upvote = id => {
+        axios
+        .get(`/api/content/${id}/edit`)
+        .then(response => this.setState({ filterParam: response.data[0].votes }) )
+    }
+
     /* Filter through blog posts by input parameter */
     updateSearchParam = e => {
         this.setState({ typing: true})
         let value = e.target.value
-        console.log(e.which)
         let searchBody = this.state.blogs
         let newAr = []
         if (e.keyCode === 13){  
@@ -125,7 +133,8 @@ export default class BlogsComponent extends Component {
                                 <div className="tile-bottom">
                                     <ThumbsUp
                                         postId={item.id}
-                                        vote={this.upvote}
+                                        votes={item.votes}
+                                        upvote={this.upvote}
                                     />
                                     <CommentIcon
                                         postId={item.id}

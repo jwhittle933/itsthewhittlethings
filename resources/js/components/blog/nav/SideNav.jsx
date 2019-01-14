@@ -7,12 +7,11 @@ import User from '../svg/User'
 class SideNav extends Component {
 
     /** 
-      * TODO: Alternate between "Login" option for unauthenticated user
-      * and Authenticated User toolbox that displays user's name and 
-      * toggles a menu with create/delete/admin options
-      *
+      * TODO:
       * Move each SideBar item into an HOC. create single toggle control method for each based on
       * unique identifier
+      * 
+      * Each SubNav shows recent entries into that category
     */
 
     state = {
@@ -21,6 +20,7 @@ class SideNav extends Component {
         churchSubView: false,
         booksSubView: false,
         loggedIn: false,
+        showHelp: false
     }
 
     toggleFood = () => {
@@ -48,11 +48,18 @@ class SideNav extends Component {
         })
     }
 
+    showHelp = () => {
+        this.state.showHelp === true ?
+        this.setState({ showHelp: false }) :
+        this.setState({ showHelp: true })
+    }
 
     render() {
         return (
             <nav className="sideNavComponent">
-                <a className="sidenav-lead font-xl" href="/">IWT</a>
+                <div className="sidenav-lead">
+                    <a className="font-xl" href="/">IWT</a>
+                </div>
                 <div className="sidenav-links">
                     <p id="Food" className="link main-font" onClick={ this.toggleFood }>Food</p>
                     {  this.state.foodSubView ?
@@ -94,17 +101,30 @@ class SideNav extends Component {
                         />
                         : null
                     }
+                    <a href="/store" className="link main-font">Store</a>
 
                 </div>
-                <div className="user-direct">
-
-            {/* TODO: Create hover help for User and Login component that identifies what each represents */}
-
+                <div className="user-direct" onMouseEnter={this.showHelp} onMouseLeave={this.showHelp}>
                 {
                     this.props.user ?
-                    <User user={this.props.user} /> :
+                    <User 
+                        user={this.props.user}
+                     /> :
                     <Login />
                 }
+
+                {   this.props.user && this.state.showHelp === true ?
+                    <p className="main-font font-sm user-popover">
+                        { this.props.user }
+                    </p> : null
+                }
+                {
+                    !this.props.user && this.state.showHelp === true ?
+                        <p className="main-font font-sm user-popover">
+                            Login
+                        </p> : null
+                }
+
                 </div>
             </nav>
         )
