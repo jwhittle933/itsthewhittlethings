@@ -78709,7 +78709,7 @@ if (document.getElementById('landing')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jwhittle/DevProjects/ItsTheWhittleThings/itsthewhittlethings/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/jonathanwhittle/Development/Personal/itsthewhittlethings/resources/js/app.js */"./resources/js/app.js");
 
 
 /***/ })

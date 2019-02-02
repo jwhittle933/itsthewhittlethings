@@ -1,5 +1,4 @@
-asellus pretium eget sem in facilisis. Pellentesque sed luctus est, id scelerisque ligula. Nam tristique nisl et mauris elementum, sed semper lectus tincidunt. Quisque ut turpis sapien. Mauris faucibus sapien ut ante placerat venenatis. Ut justo leo, tincidunt non mauris sit amet, luctus euismod leo. Etiam vitae lectus vitae eros porttitor porttitor ut et mauris. Duis mattis mi quis odio mollis blandit. Maecenas dapibus erat et maximus tempus. In in elit id dolor tempor dapibus. Aliquam eleifend vitae enim efficitur tristique. Sed laoreet nulla ut libero pretium, in tincidunt nisi eleifend. Fusce sed sapien vitae enim maximus iaculis.',
-    111|        'keywords' => '["Lorem Ips<?php
+<?php
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
