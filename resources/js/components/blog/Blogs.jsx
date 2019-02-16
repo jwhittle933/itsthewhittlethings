@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import SearchIcon from './svg/Search'
 import ThumbsUp from './svg/ThumbsUp'
 import CommentIcon from './svg/Comment'
 import Loading from './svg/Loading'
+import { Search } from 'grommet-icons'
 import Moment from 'react-moment'
 import 'moment-timezone'
 
@@ -97,7 +97,7 @@ export default class BlogsComponent extends Component {
         return (
             <div className="blogsComponent">
                 <div className="searchbar">
-                    <SearchIcon />
+                    <Search />
                     <input  onFocus={this.focus}
                             onBlur={this.blur}
                             type="text" 

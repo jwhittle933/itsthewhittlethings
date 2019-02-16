@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom';
 import SubNav from './SubNav'
-import Login from '../svg/Login'
-import User from '../svg/User'
+// import Login from '../svg/Login'
+import { Login } from 'grommet-icons'
+// import User from '../svg/User'
+import { User } from 'grommet-icons'
 
 class SideNav extends Component {
 
@@ -107,10 +109,14 @@ class SideNav extends Component {
                 <div className="user-direct" onMouseEnter={this.showHelp} onMouseLeave={this.showHelp}>
                 {
                     this.props.user ?
-                    <User 
-                        user={this.props.user}
-                     /> :
-                    <Login />
+                    <a href="" className="user-icon">
+                        <User 
+                            color={"white"}
+                         />
+                     </a> :
+                    <a href="/home" className="login-icon">
+                        <Login color={"white"}/>
+                    </a>
                 }
 
                 {   this.props.user && this.state.showHelp === true ?

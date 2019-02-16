@@ -105,24 +105,16 @@ button {
   height: auto; 
 }
 .login-icon {
+  cursor: pointer;
   display: inline-block;
   width: 1.5vw; 
   height: auto; 
 }
-.login-icon path {
-  fill: white; 
-}
 .user-icon {
+  cursor: pointer;
   display: inline-block;
   height: 5vh;
   width: auto; 
-}
-.user-icon path {
-  fill: white; 
-  stroke:none;
-  fill-rule:nonzero;
-  fill:rgb(255,255,255);
-  fill-opacity:1;
 }
 .user-popover {
   display: absolute; 
@@ -179,6 +171,22 @@ button {
 .searchbar {
   display: flex;
   justify-content: flex-end;
+}
+.login-input {
+  width: 10vw;
+  padding-left: 1vw;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  font-family: Nunito;
+  transition: border-left cubic-bezier(0,.89,.36,.28) .1s;
+  transition: width cubic-bezier(0,.89,.36,.28) .1s;
+}
+.login-input:focus {
+  outline: none;
+  border-bottom: 1px solid #00ADB5;
+  width: 20vw;
 }
 .blog-search-input {
   width: 10vw;

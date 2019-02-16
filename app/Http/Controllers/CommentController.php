@@ -47,6 +47,7 @@ class CommentController extends Controller
                 'comment' => $comment,
                 'name' => $name,
                 'blog_id' => $blogID,
+                'votes' => 0
             ]);
             //TODO: Increment comment_count on Blogposts table
             if($newComment){
