@@ -109,7 +109,7 @@ export default class BlogsComponent extends Component {
                     {
                         this.state.typing ?
                         <div className="search-instructions">
-                            <p className="main-font font-sm">Press Enter</p>
+                            <p className="main-font font-sm enter">Press Enter</p>
                         </div> : null
                     }
                 </div>

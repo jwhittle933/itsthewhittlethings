@@ -161,12 +161,15 @@ button {
   background-color: black; 
   color: white; 
   opacity: .7;
-  height: 4vh;
+  height: 3vh;
   width: 6vw;
   border-radius: 5px;
-  padding: 3px;
-  margin: 1vh;
+  /*padding: 3px;*/
+  /*margin: 1vh;*/
   text-align: center; 
+}
+.enter {
+  margin-top: 0.5vh;
 }
 .searchbar {
   display: flex;
