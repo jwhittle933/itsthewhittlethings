@@ -1,10 +1,7 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom';
 import SubNav from './SubNav'
-// import Login from '../svg/Login'
-import { Login } from 'grommet-icons'
-// import User from '../svg/User'
-import { User } from 'grommet-icons'
+import { Login, User, Cafeteria, Grow, Catalog, Inspect, Workshop, Currency } from 'grommet-icons'
 
 class SideNav extends Component {
 
@@ -20,6 +17,7 @@ class SideNav extends Component {
         foodSubView: false,
         parentingSubView: false,
         churchSubView: false,
+        academicsSubView: false,
         booksSubView: false,
         loggedIn: false,
         showHelp: false
@@ -43,6 +41,12 @@ class SideNav extends Component {
             churchSubView: newState,
         })
     }
+    toggleAcademics = () => {
+        let newState = this.state.academicsSubView ? false : true
+        this.setState({
+            academicsSubView: newState,
+        })
+    }
     togglePopular = () => {
         let newState = this.state. booksSubView ? false : true
         this.setState({
@@ -63,7 +67,10 @@ class SideNav extends Component {
                     <a className="font-xl" href="/">IWT</a>
                 </div>
                 <div className="sidenav-links">
-                    <p id="Food" className="link main-font" onClick={ this.toggleFood }>Food</p>
+                    <p id="Food" className="link main-font" onClick={ this.toggleFood }>
+                        <Cafeteria className="icon" color={"white"}/>
+                        Food
+                    </p>
                     {  this.state.foodSubView ?
                         <SubNav
                             article1={"Cooking for Large Families"}
@@ -73,7 +80,10 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <p id="Parenting" className="link main-font" onClick={ this.toggleParenting }>Parenting</p>
+                    <p id="Parenting" className="link main-font" onClick={ this.toggleParenting }>
+                       <Grow className="icon" color={"white"}/>
+                       Parenting
+                    </p>
                     {   this.state.parentingSubView ?
                         <SubNav
                             article1={"Spoil the Rod, Spare the Child"}
@@ -83,7 +93,10 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <p id="Church" className="link main-font" onClick={ this.toggleChurch }>Church</p>
+                    <p id="Church" className="link main-font" onClick={ this.toggleChurch }>
+                        <Workshop className="icon" color={"white"}/>
+                        Church
+                    </p>
                     {   this.state.churchSubView ?
                         <SubNav
                             article1={"Children's Church for Sinners"}
@@ -93,7 +106,23 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <p id="Popular" className="link main-font" onClick={ this.togglePopular }>Books</p>
+                    <p id="Academics" className="link main-font" onClick={ this.toggleAcademics }>
+                       <Inspect className="icon" color={"white"}/>
+                       Academics
+                    </p>
+                    {   this.state.academicsSubView ?
+                        <SubNav
+                            article1={"They Aren't That Smart"}
+                            article2={"Balogna"}
+                            article3={"Stupid Professor"}
+                            view={ this.state.academicsSubView }
+                        />
+                        : null
+                    }
+                    <p id="Popular" className="link main-font" onClick={ this.togglePopular }>
+                        <Catalog className="icon" color={"white"}/>
+                        Books
+                    </p>
                     {   this.state. booksSubView ?
                         <SubNav
                             article1={"Tender Hearts, Hard Spanks"}
@@ -103,7 +132,10 @@ class SideNav extends Component {
                         />
                         : null
                     }
-                    <a href="/store" className="link main-font">Store</a>
+                    <a href="/store" className="link main-font">
+                        <Currency className="icon" color={"white"}/>
+                        Store
+                    </a>
 
                 </div>
                 <div className="user-direct" onMouseEnter={this.showHelp} onMouseLeave={this.showHelp}>

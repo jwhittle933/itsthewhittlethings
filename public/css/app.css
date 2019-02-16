@@ -128,10 +128,13 @@ button {
   border-radius: 5px; 
   animation: tilebounce .3s;
 }
+.icon {
+  margin-right: 1vw;
+}
 .link {
   display: block;
   font-family: Nunito;
-  font-size: 1.2em;
+  font-size: 1.4em;
   color: white;
   padding-left: 1vw;
   cursor: pointer;
@@ -158,14 +161,12 @@ button {
   padding-left: 2px;
 }
 .search-instructions {
-  background-color: black; 
+  background-color: #326FC0; 
   color: white; 
   opacity: .7;
   height: 3vh;
   width: 6vw;
   border-radius: 5px;
-  /*padding: 3px;*/
-  /*margin: 1vh;*/
   text-align: center; 
 }
 .enter {
